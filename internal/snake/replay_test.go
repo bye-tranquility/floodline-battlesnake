@@ -88,3 +88,13 @@ func TestWinningDuelAndStandardEndings(t *testing.T) {
 		}
 	}
 }
+
+func TestRoyaleTailOpensPitonEscape(t *testing.T) {
+	records := readReplay(t, "royale-piton")
+	if len(records) != 1 || records[0].Game.ID != "cccacfaa-e3e7-4201-bf26-e869fbb1f706" || records[0].Turn != 129 {
+		t.Fatal("missing PITON turn 129")
+	}
+	if got := replayMove(t, &records[0]); got != up {
+		t.Fatalf("chose %s instead of the exit opened by the moving tail", names[got])
+	}
+}

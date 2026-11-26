@@ -3,7 +3,7 @@ WORKDIR /src
 COPY go.mod go.sum ./
 COPY main.go ./
 COPY internal/ internal/
-ARG VERSION=v0.6.0
+ARG VERSION=v0.7.0
 RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w -X main.version=${VERSION}" -o /floodline .
 
 FROM scratch

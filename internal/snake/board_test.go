@@ -174,6 +174,35 @@ func TestConstrictorRivalCanSealPassage(t *testing.T) {
 	}
 }
 
+func TestRoyaleArrivalHealthAndRetreat(t *testing.T) {
+	r := setup("royale", [][]int{{22, 15, 8}, {46, 45, 44}}, []int{90, 90}, nil, []int{23})
+	p, err := r.position()
+	if err != nil {
+		t.Fatal(err)
+	}
+	a := newAnalysis(len(p.food))
+	routes := a.prepareRoyale(p)
+	if routes.retreat[23] != 1 {
+		t.Fatalf("leaving a hazard for safe ground costs %d HP", routes.retreat[23])
+	}
+	for c := range a.blocked {
+		a.blocked[c] = c < 22 || c > 24
+	}
+	routes.travel(p, a.blocked, 22, 17, 0)
+	if routes.arrival[23] != 1 || routes.arrival[24] != 2 {
+		t.Fatal("a healthy opponent needs two turns to cross the hazard")
+	}
+	routes.travel(p, a.blocked, 22, 15, 0)
+	if routes.arrival[23] != infinity {
+		t.Fatal("the opponent cannot survive entering an empty hazard at 15 HP")
+	}
+	p.food[23] = true
+	routes.travel(p, a.blocked, 22, 1, 0)
+	if routes.arrival[24] != 2 || routes.bestHP[24] != 99 {
+		t.Fatal("food in the hazard must permit a one-HP snake to return to safety")
+	}
+}
+
 func TestMultiplayerEscapeBeforeReachingWall(t *testing.T) {
 	// Standard seed 4102, turn 21. Moving down led into a pocket for
 	// the following four turns. The right exit is still open on this turn.

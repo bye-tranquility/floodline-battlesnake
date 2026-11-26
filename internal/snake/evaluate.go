@@ -112,7 +112,12 @@ func nutrition(r region, hp, lengthGap int) int {
 
 func (p position) steer(a *analysis, style string) direction {
 	ahead := p.snakes[0]
-	a.measureOpponents(p)
+	var routes *royaleRoutes
+	if p.royale && style == "search" && len(p.snakes) > 2 {
+		routes = a.prepareRoyale(p)
+	} else {
+		a.measureOpponents(p)
+	}
 	longest := 0
 	for _, s := range p.snakes[1:] {
 		longest = max(longest, len(s.body))
@@ -132,6 +137,11 @@ func (p position) steer(a *analysis, style string) direction {
 		hp := p.nextHealth(ahead, c)
 		score := spaceScore(r, length) - p.centerDistance(c)
 		claimed := territory(a.own, a.nearest, gap)
+		if routes != nil {
+			var penalty int
+			claimed, penalty = routes.assess(p, a, c, hp, length, &r)
+			score -= penalty
+		}
 		switch style {
 		case "food":
 			score = 3*r.exits - 12*min(r.food, 35)
@@ -159,6 +169,15 @@ func (p position) steer(a *analysis, style string) direction {
 				remaining := 240
 				score += 110 * a.trail(p, c, 1, 14, &remaining)
 				score += choke.score(p, a, c, r.area)
+			} else if routes != nil {
+				const extra = 8
+				steps := routes.escape(p, a, c, hp, extra)
+				score -= 110 * (extra - steps)
+				// A snake longer than the route cannot revisit a cell.
+				// Exceeding the component's size requires a tail to open a way out.
+				if steps == extra && length > extra && r.area < extra+1 {
+					score += 85 * max(0, length+2-r.area)
+				}
 			} else {
 				// Bodies can move away in these modes. Look only a few turns
 				// ahead for an escape before penalizing a crowded pocket.
