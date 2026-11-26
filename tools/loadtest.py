@@ -29,13 +29,17 @@ def measure(endpoint, payload):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--url", default="http://127.0.0.1:8080")
-    parser.add_argument("--fixtures", default="testdata/positions.jsonl.gz")
+    parser.add_argument("--fixtures", help="override the default corpus with a JSONL or gzipped JSONL file")
     parser.add_argument("--requests", type=int, default=1000, help="total, split between serial and concurrent")
     parser.add_argument("--out")
     args = parser.parse_args()
-    opener = gzip.open if args.fixtures.endswith(".gz") else open
-    with opener(args.fixtures, "rt") as f:
-        samples = [json.loads(line) for line in f if line.strip()]
+    sources = [Path(args.fixtures)] if args.fixtures else [
+        Path("testdata/positions.jsonl.gz"), *sorted(Path("testdata/arena").glob("*.json"))]
+    samples = []
+    for source in sources:
+        opener = gzip.open if source.suffix == ".gz" else open
+        with opener(source, "rt") as f:
+            samples.extend(json.loads(line) for line in f if line.strip())
     url = urlsplit(args.url)
     if not samples or args.requests < 2 or url.scheme not in ("http", "https"):
         parser.error("provide HTTP URL, move fixtures and at least two requests")
