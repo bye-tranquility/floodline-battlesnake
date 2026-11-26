@@ -34,7 +34,8 @@ def main():
     parser.add_argument("--out")
     args = parser.parse_args()
     sources = [Path(args.fixtures)] if args.fixtures else [
-        Path("testdata/positions.jsonl.gz"), *sorted(Path("testdata/arena").glob("*.json"))]
+        Path("testdata/positions.jsonl.gz"), *sorted(Path("testdata/arena").glob("*.json")),
+        *sorted(Path("testdata/replays").glob("*.jsonl.gz"))]
     samples = []
     for source in sources:
         opener = gzip.open if source.suffix == ".gz" else open

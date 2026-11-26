@@ -1,0 +1,230 @@
+{
+  "constrictor-choke-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Holdout for reachable room after a rival closes a passage",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "cd9e19f049744edb241d16817b112f310110513b502e7be4f48a9d2ee8e8faf7",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.68,
+      "candidate": "search",
+      "draws": 12,
+      "first_seed": 16001,
+      "losses": 38,
+      "max_ms": 1.706,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.395,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 50
+    }
+  },
+  "constrictor-choke-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Model two irreversible rival steps into a choke and count remaining connected cells",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "cd9e19f049744edb241d16817b112f310110513b502e7be4f48a9d2ee8e8faf7",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.8125,
+      "candidate": "search",
+      "draws": 5,
+      "first_seed": 14001,
+      "losses": 7,
+      "max_ms": 1.775,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.0416666666666665,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 12
+    }
+  },
+  "duel-deep-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Holdout for selective depth and escape timing; minimum 55 points",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "a2b5665dff5e84355c4f7642559513ee6589a8206cbeb97d920ee57ea3560f33",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.495,
+      "candidate": "search",
+      "draws": 97,
+      "first_seed": 12001,
+      "losses": 1,
+      "max_ms": 11.382,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 50,
+      "points": 50.5,
+      "reference_average_place": 1.505,
+      "rotations": 2,
+      "seeds": 50,
+      "wins": 2
+    }
+  },
+  "duel-deep-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Selectively allow 4800 nodes in the same endgame corridors at 75 ms",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "a2b5665dff5e84355c4f7642559513ee6589a8206cbeb97d920ee57ea3560f33",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.4791666666666667,
+      "candidate": "search",
+      "draws": 23,
+      "first_seed": 11001,
+      "losses": 0,
+      "max_ms": 17.212,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 12,
+      "points": 12.5,
+      "reference_average_place": 1.5208333333333333,
+      "rotations": 2,
+      "seeds": 12,
+      "wins": 1
+    }
+  },
+  "duel-opening-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Take safe nearby food before contesting the center after early head-to-head draws",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "96b565f8dc189cd72148a14864c439148b5c9e9a20c68c04970b79d9d8a857ed",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.5,
+      "candidate": "search",
+      "draws": 24,
+      "first_seed": 11001,
+      "losses": 0,
+      "max_ms": 11.549,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 12,
+      "points": 12.0,
+      "reference_average_place": 1.5,
+      "rotations": 2,
+      "seeds": 12,
+      "wins": 0
+    }
+  },
+  "duel-survive-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Holdout for keeping a live chance instead of trading heads in equal positions",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "88c9363702eeb006465a4670dfbe931bd22aec227f3e9e08d29aefbbc1a30cce",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.385,
+      "candidate": "search",
+      "draws": 1,
+      "first_seed": 15001,
+      "losses": 38,
+      "max_ms": 67.501,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 50,
+      "points": 61.5,
+      "reference_average_place": 1.615,
+      "rotations": 2,
+      "seeds": 50,
+      "wins": 61
+    }
+  },
+  "duel-survive-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Discount a forced early mutual elimination when a playable continuation remains",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "88c9363702eeb006465a4670dfbe931bd22aec227f3e9e08d29aefbbc1a30cce",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.4583333333333333,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 11001,
+      "losses": 11,
+      "max_ms": 13.987,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 12,
+      "points": 13.0,
+      "reference_average_place": 1.5416666666666667,
+      "rotations": 2,
+      "seeds": 12,
+      "wins": 13
+    }
+  },
+  "duel-tail-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Compare tail release and rival arrival in late-game corridors",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "4dbc67a1c3b7f05aacc25fe8a78733bbe16375b0005589b3b72da69f7a3900c2",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.5,
+      "candidate": "search",
+      "draws": 24,
+      "first_seed": 11001,
+      "losses": 0,
+      "max_ms": 3.842,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 12,
+      "points": 12.0,
+      "reference_average_place": 1.5,
+      "rotations": 2,
+      "seeds": 12,
+      "wins": 0
+    }
+  },
+  "royale-routes-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Separate arrival turns from survivable health cost and price the return from hazard food",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "a8f832a9a4126ce428d2df179b73ebd9452697166f5504cbb1c82be1e21250f6",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 2.4583333333333335,
+      "candidate": "search",
+      "draws": 2,
+      "first_seed": 13001,
+      "losses": 17,
+      "max_ms": 3.254,
+      "mode": "royale",
+      "opponent": "search",
+      "reference_average_place": 2.0625,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 5
+    }
+  }
+}

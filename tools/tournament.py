@@ -141,12 +141,16 @@ def main():
     parser.add_argument("--opponent", default="baseline")
     parser.add_argument("--mode", choices=("duels", "standard", "royale", "constrictor"), default="duels")
     parser.add_argument("--seeds", type=int, default=12)
+    parser.add_argument("--rotations", type=int, choices=(2, 4), default=2,
+                        help="swap the two contestants or rotate all four actual starting cells")
     parser.add_argument("--first-seed", type=int, default=1001)
     parser.add_argument("--out", required=True)
     parser.add_argument("--hypothesis", default="", help="description to keep with the results")
     args = parser.parse_args()
     if args.seeds < 1:
         parser.error("--seeds must be positive")
+    if args.mode == "duels" and args.rotations != 2:
+        parser.error("duels have two starting cells")
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     log = out / "games.jsonl"
@@ -163,7 +167,7 @@ def main():
         if args.mode != "duels":
             styles.update(forager="food", pressure="press")
         router.players = {k: stack.enter_context(player(
-            args.reference_binary if k == "reference" and args.reference_binary else args.binary, v))
+            args.reference_binary if k != "candidate" and args.reference_binary else args.binary, v))
             for k, v in styles.items()}
         router.connections = {k: stack.enter_context(contextlib.closing(
             http.client.HTTPConnection("127.0.0.1", port, timeout=2))) for k, port in router.players.items()}
@@ -172,17 +176,18 @@ def main():
         try:
             with log.open("x") as f:
                 for seed in range(args.first_seed, args.first_seed + args.seeds):
-                    for side in range(2):
-                        router.seats = list(styles)
-                        if side:
-                            router.seats[:2] = reversed(router.seats[:2])
+                    order = list(styles)
+                    for side in range(args.rotations):
+                        if args.rotations == 4:
+                            router.seats = order[side:] + order[:side]
+                        else:
+                            router.seats = order[:] if side == 0 else [order[1], order[0], *order[2:]]
                         record = play(args, router, seed, side)
-                        if side:
-                            other = records[-1]
-                            if (other["starts"]["candidate"] != record["starts"]["reference"] or
-                                other["starts"]["reference"] != record["starts"]["candidate"] or
-                                other["food"] != record["food"]):
-                                raise RuntimeError(f"opening mismatch on seed {seed}")
+                        if side == 0:
+                            opening = record
+                        expected = {label: opening["starts"][order[i]] for i, label in enumerate(router.seats)}
+                        if record["starts"] != expected or record["food"] != opening["food"]:
+                            raise RuntimeError(f"opening mismatch on seed {seed}, rotation {side}")
                         records.append(record)
                         print(json.dumps(record), file=f, flush=True)
         finally:
@@ -190,10 +195,12 @@ def main():
     wins = sum(r["winner"] == "candidate" for r in records)
     draws = sum(r["draw"] for r in records)
     summary = dict(mode=args.mode, candidate=args.candidate, opponent=args.opponent,
-                   first_seed=args.first_seed, pairs=args.seeds, wins=wins, draws=draws,
+                   first_seed=args.first_seed, seeds=args.seeds, rotations=args.rotations, wins=wins, draws=draws,
                    losses=len(records)-wins-draws, average_place=sum(r["place"] for r in records)/len(records),
                    reference_average_place=sum(r["reference_place"] for r in records)/len(records),
                    max_ms=max(r["candidate_max_ms"] for r in records))
+    if args.rotations == 2:
+        summary["pairs"] = args.seeds
     if args.mode == "duels":
         summary["points"] = wins + draws / 2
     (out / "summary.json").write_text(json.dumps(summary, indent=2)+"\n")

@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from html import unescape
 import json
 import re
+import time
 from urllib.request import urlopen
 
 
@@ -25,8 +26,14 @@ REFERENCES = {
 
 
 def fetch(path):
-    with urlopen(ARENA + path, timeout=15) as response:
-        return response.read().decode()
+    for attempt in range(3):
+        try:
+            with urlopen(ARENA + path, timeout=12) as response:
+                return response.read().decode()
+        except OSError:
+            if attempt == 2:
+                raise
+            time.sleep(attempt + 1)
 
 
 def standing(board_id, table, snake_id):

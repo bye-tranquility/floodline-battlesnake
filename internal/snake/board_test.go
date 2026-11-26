@@ -145,6 +145,35 @@ func TestConstrictorTrailHasAnExit(t *testing.T) {
 	}
 }
 
+func TestConstrictorRivalCanSealPassage(t *testing.T) {
+	r := setup("constrictor", [][]int{{15, 8, 1, 1}, {31, 38, 45, 45}}, []int{100, 100}, nil, nil)
+	p, err := r.position()
+	if err != nil {
+		t.Fatal(err)
+	}
+	a := newAnalysis(len(p.food))
+	p.occupied(a.blocked)
+	for y := 0; y < 7; y++ {
+		a.blocked[y*7+3] = y != 3
+	}
+	var check chokeCheck
+	const entry = 16
+	score := func() int {
+		before := slices.Clone(a.blocked)
+		room := a.walk(p, entry, a.own)
+		score := check.score(p, a, entry, room.area)
+		if !slices.Equal(before, a.blocked) {
+			t.Fatal("candidate reply changed the real board")
+		}
+		return score
+	}
+	single := score()
+	a.blocked[3] = false
+	if two := score(); two <= single {
+		t.Fatalf("two independent passages scored %d, one blockable passage %d", two, single)
+	}
+}
+
 func TestMultiplayerEscapeBeforeReachingWall(t *testing.T) {
 	// Standard seed 4102, turn 21. Moving down led into a pocket for
 	// the following four turns. The right exit is still open on this turn.

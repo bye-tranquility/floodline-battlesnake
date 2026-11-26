@@ -118,6 +118,7 @@ func (p position) steer(a *analysis, style string) direction {
 		longest = max(longest, len(s.body))
 	}
 	best, chosen := -infinity, up
+	var choke chokeCheck
 	for move, c := range p.next[ahead.body[0]] {
 		if c < 0 || a.blocked[c] || p.nextHealth(ahead, c) <= 0 {
 			continue
@@ -157,6 +158,7 @@ func (p position) steer(a *analysis, style string) direction {
 			if p.constrictor {
 				remaining := 240
 				score += 110 * a.trail(p, c, 1, 14, &remaining)
+				score += choke.score(p, a, c, r.area)
 			} else {
 				// Bodies can move away in these modes. Look only a few turns
 				// ahead for an escape before penalizing a crowded pocket.
