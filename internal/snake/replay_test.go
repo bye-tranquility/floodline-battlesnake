@@ -98,3 +98,31 @@ func TestRoyaleTailOpensPitonEscape(t *testing.T) {
 		t.Fatalf("chose %s instead of the exit opened by the moving tail", names[got])
 	}
 }
+
+func TestSeparatedChamberAgainstHoveringHobbs(t *testing.T) {
+	records := readReplay(t, "constrictor-hobbs")
+	if len(records) != 1 || records[0].Game.ID != "5bc99e79-75c5-4162-9d48-a83373b739ef" || records[0].Turn != 24 {
+		t.Fatal("missing Hovering Hobbs turn 24")
+	}
+	p, err := records[0].position()
+	if err != nil {
+		t.Fatal(err)
+	}
+	a := newAnalysis(len(p.food))
+	a.measureOpponents(p)
+	before := slices.Clone(a.blocked)
+	route := func(move direction) int {
+		to := p.next[p.snakes[0].body[0]][move]
+		search := chamberSearch{board: p, analysis: a, seen: make([]int, len(p.food)), nodesLeft: 1400}
+		search.target, _ = search.bound(to)
+		search.follow(to, 0)
+		t.Logf("%s found %d cells, upper bound %d", names[move], search.best, search.target)
+		return search.best
+	}
+	if route(right) <= route(up) || p.separatedPath(a, up) != right || replayMove(t, &records[0]) != right {
+		t.Fatal("failed to preserve the longer trail on the right")
+	}
+	if !slices.Equal(before, a.blocked) {
+		t.Fatal("hypothetical trail altered the actual position")
+	}
+}

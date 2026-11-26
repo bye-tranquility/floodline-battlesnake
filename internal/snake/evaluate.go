@@ -209,6 +209,9 @@ func (p position) steer(a *analysis, style string) direction {
 			best, chosen = score, direction(move)
 		}
 	}
+	if p.constrictor && style == "search" && len(p.snakes) > 2 {
+		return p.separatedPath(a, chosen)
+	}
 	return chosen
 }
 

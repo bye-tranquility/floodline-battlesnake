@@ -66,6 +66,7 @@ class SeatRouter(BaseHTTPRequestHandler):
     def do_POST(self):
         state = self.server
         raw = self.rfile.read(int(self.headers["Content-Length"]))
+        label = "unknown"
         try:
             req = json.loads(raw)
             if self.path == "/start":
@@ -74,7 +75,12 @@ class SeatRouter(BaseHTTPRequestHandler):
             label = state.labels[req["you"]["id"]]
             started = time.perf_counter()
             with state.locks[label]:
-                status, body = request(state.connections[label], "POST", self.path, raw)
+                conn = state.connections[label]
+                # Eliminated snakes may be idle until a long game finishes.
+                # Open a fresh connection for each lifecycle notification.
+                if self.path in ("/start", "/end"):
+                    conn.close()
+                status, body = request(conn, "POST", self.path, raw)
             elapsed = (time.perf_counter()-started)*1000
             if status != 200:
                 raise RuntimeError(f"{label} returned {status}")
@@ -84,7 +90,7 @@ class SeatRouter(BaseHTTPRequestHandler):
                 state.times[label].append(elapsed)
             self.reply(status, body)
         except Exception as exc:
-            state.errors.append(str(exc))
+            state.errors.append(f"{label} {self.path}: {exc}")
             self.reply(502, b'{}')
 
 

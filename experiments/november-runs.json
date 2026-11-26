@@ -119,6 +119,130 @@
       "wins": 10
     }
   },
+  "constrictor-path-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Independent holdout for longest paths in separated arenas after the Hovering Hobbs loss",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "7476e621800f8743ef6b3e4ef249bdf98574abd80ad488f76575c40e19914628",
+      "reference": "c903ec3b3643101e00ca35fed1cda7673121126ebb1fd04ecb4f6ffd8cc17b02"
+    },
+    "summary": {
+      "average_place": 1.82,
+      "candidate": "search",
+      "draws": 14,
+      "first_seed": 34001,
+      "losses": 47,
+      "max_ms": 1.71,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.095,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 39
+    }
+  },
+  "constrictor-path-original-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Verify independent-chamber paths against the initial course baseline as well as v0.8.0",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "7476e621800f8743ef6b3e4ef249bdf98574abd80ad488f76575c40e19914628",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.75,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 35001,
+      "losses": 49,
+      "max_ms": 1.924,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.18,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 51
+    }
+  },
+  "constrictor-path-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Use the longest feasible path once opposed heads cannot reach our remaining component",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "7476e621800f8743ef6b3e4ef249bdf98574abd80ad488f76575c40e19914628",
+      "reference": "c903ec3b3643101e00ca35fed1cda7673121126ebb1fd04ecb4f6ffd8cc17b02"
+    },
+    "summary": {
+      "average_place": 1.7916666666666667,
+      "candidate": "search",
+      "draws": 2,
+      "first_seed": 33001,
+      "losses": 14,
+      "max_ms": 1.675,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.2083333333333335,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 8
+    }
+  },
+  "duel-chance-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Test the neutral screen that found the last saved line against Whirav on turn 236",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "2e9a082b4f0980783fa0138d0cb510cf1cc04a4b0c66f24ae6c890b5fcc0e4e3",
+      "reference": "c903ec3b3643101e00ca35fed1cda7673121126ebb1fd04ecb4f6ffd8cc17b02"
+    },
+    "summary": {
+      "average_place": 1.51,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 32001,
+      "losses": 51,
+      "max_ms": 77.21,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 50,
+      "points": 49.0,
+      "reference_average_place": 1.49,
+      "rotations": 2,
+      "seeds": 50,
+      "wins": 49
+    }
+  },
+  "duel-chance-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "In a proved loss, seek replies that give the opponent a chance to miss the forced kill",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "2e9a082b4f0980783fa0138d0cb510cf1cc04a4b0c66f24ae6c890b5fcc0e4e3",
+      "reference": "c903ec3b3643101e00ca35fed1cda7673121126ebb1fd04ecb4f6ffd8cc17b02"
+    },
+    "summary": {
+      "average_place": 1.5,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 31001,
+      "losses": 12,
+      "max_ms": 87.309,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 12,
+      "points": 12.0,
+      "reference_average_place": 1.5,
+      "rotations": 2,
+      "seeds": 12,
+      "wins": 12
+    }
+  },
   "duel-deep-control": {
     "engine": "Battlesnake CLI v1.2.3",
     "hypothesis": "Holdout for selective depth and escape timing; minimum 55 points",
@@ -741,6 +865,54 @@
       "rotations": 4,
       "seeds": 6,
       "wins": 6
+    }
+  },
+  "standard-tail-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Independent four-player Standard control for the moving-tail escape",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "f3568ac603705e8d6ee4f83e1f97ca3ca80363fc4a157b1d446832da26278838",
+      "reference": "c903ec3b3643101e00ca35fed1cda7673121126ebb1fd04ecb4f6ffd8cc17b02"
+    },
+    "summary": {
+      "average_place": 2.1,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 30001,
+      "losses": 57,
+      "max_ms": 29.172,
+      "mode": "standard",
+      "opponent": "search",
+      "reference_average_place": 1.815,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 43
+    }
+  },
+  "standard-tail-screen-verified": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Late Standard tail release; use fresh lifecycle connections for players idle after elimination",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "f3568ac603705e8d6ee4f83e1f97ca3ca80363fc4a157b1d446832da26278838",
+      "reference": "c903ec3b3643101e00ca35fed1cda7673121126ebb1fd04ecb4f6ffd8cc17b02"
+    },
+    "summary": {
+      "average_place": 1.9791666666666667,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 29001,
+      "losses": 15,
+      "max_ms": 52.431,
+      "mode": "standard",
+      "opponent": "search",
+      "reference_average_place": 2.25,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 9
     }
   }
 }
