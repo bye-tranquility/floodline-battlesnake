@@ -38,8 +38,15 @@ func Decide(r *Request, started time.Time, opts Options) (Decision, error) {
 		}
 	}
 	search := duelSearch{analysis: a, deadline: started.Add(budget), limit: opts.NodeLimit}
-	if opts.NodeLimit == 1200 && !p.royale && !p.constrictor && a.tightDuel(p) {
-		search.limit = 4800
+	if opts.NodeLimit == 1200 && !p.royale && !p.constrictor {
+		if a.tightDuel(p) {
+			search.limit = 4800
+		}
+		// Short snakes far behind have to convert food opportunities quickly.
+		// The broader territorial search can spend that window circling.
+		if p.plainDuelGrid && (len(p.snakes[0].body) >= 7 || len(p.snakes[0].body)+2 >= len(p.snakes[1].body)) {
+			search.limit *= 4
+		}
 	}
 	preferred := fallback
 	for depth := 1; depth <= 16; depth++ {

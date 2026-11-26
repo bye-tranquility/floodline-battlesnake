@@ -48,6 +48,7 @@ type field struct {
 	damage        []int
 	constrictor   bool
 	royale        bool
+	plainDuelGrid bool
 }
 
 type serpent struct {
@@ -72,6 +73,7 @@ func (r *Request) position() (position, error) {
 	mode := strings.ToLower(r.Game.Map + " " + r.Game.Ruleset.Name)
 	f.constrictor = strings.Contains(mode, "constrictor")
 	f.royale = strings.Contains(mode, "royale")
+	f.plainDuelGrid = b.Width == 11 && b.Height == 11 && len(b.Hazards) == 0 && !f.constrictor && !f.royale
 	for c := range f.next {
 		x, y := c%b.Width, c/b.Width
 		adj := [4]int{-1, -1, -1, -1}

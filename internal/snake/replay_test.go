@@ -184,3 +184,16 @@ func TestPermanentPassagesWithDistantRivals(t *testing.T) {
 		}
 	}
 }
+
+func TestEscapeAtClassBFork(t *testing.T) {
+	for _, req := range readReplay(t, "duels-actionhero-classb") {
+		if req.Game.ID != "3a216dd4-d985-482e-aa96-dad1ab5cd062" || req.Turn != 232 {
+			continue
+		}
+		if got := replayMove(t, &req); got != up {
+			t.Fatalf("turn 232: chose %s; only up survives 12 turns against every reply", names[got])
+		}
+		return
+	}
+	t.Fatal("missing Class B turn 232")
+}

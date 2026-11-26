@@ -37,10 +37,14 @@ func (a *analysis) tightDuel(p position) bool {
 	return false
 }
 
+func (r region) needsPocketCheck(length int) bool {
+	return length >= 6 && (r.area <= 2*length+3 || r.exits < 2)
+}
+
 func (e *pocketEscape) score(p position, us, foe serpent, room region, threat []int) int {
 	const horizon = 10
 	length := len(us.body)
-	if length < 6 || room.area > 2*length+3 && room.exits >= 2 {
+	if !room.needsPocketCheck(length) {
 		return 0
 	}
 	e.setup(len(p.food), us, []serpent{foe})

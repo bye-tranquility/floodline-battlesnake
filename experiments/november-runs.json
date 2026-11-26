@@ -239,6 +239,114 @@
       "wins": 10
     }
   },
+  "constrictor-finish-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Play simultaneous trails to a 24-turn horizon with three opponent policies and rank by relative elimination. Replay against emosnake_2.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ],
+        [
+          "food",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "0a2887b7e1b75f0ae98ce0f27612832b71685717005d025c88f12787c95c3120",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 2.6458333333333335,
+      "candidate": "search",
+      "draws": 4,
+      "first_seed": 101001,
+      "losses": 19,
+      "max_ms": 3.116,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.2083333333333335,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 1
+    }
+  },
+  "constrictor-forced-turns-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Prefer a straight safe continuation in permanent passages with several mandatory turns, using the Forkfang timeout replay.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ],
+        [
+          "food",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "1eaa7f278b1a3792149fb906c00882879eccfffd189809e52f565c13ae16f8de",
+      "reference": "1f50a99860712fc8cefb991b9b7a3654c4ce7d4aa496cd5ffb7c7504604158d3"
+    },
+    "summary": {
+      "average_place": 2.7916666666666665,
+      "candidate": "search",
+      "draws": 2,
+      "first_seed": 90001,
+      "losses": 19,
+      "max_ms": 1.373,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.625,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 3
+    }
+  },
   "constrictor-full-paired": {
     "engine": "Battlesnake CLI v1.2.3",
     "hypothesis": "Measure the deployed combined Constrictor against the original with fixed neighbors",
@@ -541,6 +649,114 @@
       "rotations": 4,
       "seeds": 6,
       "wins": 6
+    }
+  },
+  "corner-meal-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "When two equally short paths lead to the same hazard meal, favor the approach whose moving body leaves a healthier return to safety.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ],
+        [
+          "food",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "ec94d759e04e055b46012c19af566a87758666ed47a94af17726c437dd0958fa",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 2.0208333333333335,
+      "candidate": "search",
+      "draws": 4,
+      "first_seed": 94001,
+      "losses": 11,
+      "max_ms": 3.684,
+      "mode": "royale",
+      "opponent": "search",
+      "reference_average_place": 2.1458333333333335,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 9
+    }
+  },
+  "disappearing-trails-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Keep currently occupied first steps illegal but value territory that a boxed opponent will vacate on the following turn.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ],
+        [
+          "food",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "4fa5bab87161a65ba2da6d5288d2da7b09b67e3dc1827dfb21e09a873b4167aa",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 3.0416666666666665,
+      "candidate": "search",
+      "draws": 6,
+      "first_seed": 93001,
+      "losses": 17,
+      "max_ms": 1.344,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 3.0416666666666665,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 1
     }
   },
   "distant-blocks-control": {
@@ -951,6 +1167,37 @@
       "rotations": 2,
       "seeds": 12,
       "wins": 12
+    }
+  },
+  "duel-health-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Treat remaining life as a scarce resource below 70, especially below 25, in ordinary duels after missing uncontested meals against ActionHero.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "fccfd061563cc65755ad860ac0b25d08cf5c9acae0e2e7ebf1b2e94b3aab9f6f",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.625,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 105001,
+      "losses": 15,
+      "max_ms": 68.922,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 12,
+      "points": 9.0,
+      "reference_average_place": 1.375,
+      "rotations": 2,
+      "seeds": 12,
+      "wins": 9
     }
   },
   "duel-length-screen": {
@@ -2289,6 +2536,68 @@
       "wins": 9
     }
   },
+  "forced-loss-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Strict-loss endgame veto. Fresh 50 paired starts following a 12-12 screen and a verified 12-turn escape at turn 232 in the Class B replay.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "1294c06338d2ed638afaa4cabd08c46ca7c52458c6d303ad42298bea92491cad",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.52,
+      "candidate": "search",
+      "draws": 2,
+      "first_seed": 100001,
+      "losses": 51,
+      "max_ms": 77.96,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 50,
+      "points": 48.0,
+      "reference_average_place": 1.48,
+      "rotations": 2,
+      "seeds": 50,
+      "wins": 47
+    }
+  },
+  "forced-loss-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Only veto an endgame move when a rival forces a strict loss and another move survives every reply within the same 6, 10 or 12 turns. Class B Super-Snake turns 215, 232.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "1294c06338d2ed638afaa4cabd08c46ca7c52458c6d303ad42298bea92491cad",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.5,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 99001,
+      "losses": 12,
+      "max_ms": 49.794,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 12,
+      "points": 12.0,
+      "reference_average_place": 1.5,
+      "rotations": 2,
+      "seeds": 12,
+      "wins": 12
+    }
+  },
   "forecast-royale-control": {
     "engine": "Battlesnake CLI v1.2.3",
     "hypothesis": "Independent paired-seat control for the seven-turn survival forecast across different opponent styles.",
@@ -2391,6 +2700,339 @@
       "rotations": 4,
       "seeds": 6,
       "wins": 11
+    }
+  },
+  "grid-depth-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Fresh 50 matched starts for deeper simultaneous search after 21-3 screening and the proven upper escape at Class B turn 232.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "ee726247d949b1530ede0987d437146a8f8b57814cb1318169e6286b18048dd7",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.29,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 107001,
+      "losses": 29,
+      "max_ms": 122.196,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 50,
+      "points": 71.0,
+      "reference_average_place": 1.71,
+      "rotations": 2,
+      "seeds": 50,
+      "wins": 71
+    }
+  },
+  "grid-depth-original": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Independent 100 paired official-rule games versus the original submission baseline v0.4.1.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "ee726247d949b1530ede0987d437146a8f8b57814cb1318169e6286b18048dd7",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.22,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 108001,
+      "losses": 22,
+      "max_ms": 222.302,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 50,
+      "points": 78.0,
+      "reference_average_place": 1.78,
+      "rotations": 2,
+      "seeds": 50,
+      "wins": 78
+    }
+  },
+  "grid-depth-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Four times as many simultaneous nodes within the same time cap, using exact bitwise 11x11 territory verified on 1370 arena positions.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "ee726247d949b1530ede0987d437146a8f8b57814cb1318169e6286b18048dd7",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.125,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 104001,
+      "losses": 3,
+      "max_ms": 76.215,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 12,
+      "points": 21.0,
+      "reference_average_place": 1.875,
+      "rotations": 2,
+      "seeds": 12,
+      "wins": 21
+    }
+  },
+  "grid-foraging-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Independent control for the deeper-search candidate retaining short-snake foraging, after 19 wins and one draw in 24.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "e0b5a51ef745a1494acaade3e56af0d8a243088696fe047a3cce772b1caede67",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.26,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 111001,
+      "losses": 26,
+      "max_ms": 177.849,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 50,
+      "points": 74.0,
+      "reference_average_place": 1.74,
+      "rotations": 2,
+      "seeds": 50,
+      "wins": 74
+    }
+  },
+  "grid-foraging-original": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Exact release build versus v0.4.1 with independent 50 paired starts, retaining the Olej1 food and Class B escape regressions.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "29c1dc7fe5d2936a023da9a9d9311ccab8a012426ec4fa3317ff4ddea0ddf437",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.12,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 114001,
+      "losses": 12,
+      "max_ms": 130.708,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 50,
+      "points": 88.0,
+      "reference_average_place": 1.88,
+      "rotations": 2,
+      "seeds": 50,
+      "wins": 88
+    }
+  },
+  "grid-foraging-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Keep the v0.11 food-search horizon for small materially trailing snakes, and spend four times the nodes on other exact 11x11 duel boards.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "e0b5a51ef745a1494acaade3e56af0d8a243088696fe047a3cce772b1caede67",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.1875,
+      "candidate": "search",
+      "draws": 1,
+      "first_seed": 109001,
+      "losses": 4,
+      "max_ms": 106.844,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 12,
+      "points": 19.5,
+      "reference_average_place": 1.8125,
+      "rotations": 2,
+      "seeds": 12,
+      "wins": 19
+    }
+  },
+  "grid-foraging-standard": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Retest four-player Standard with the exact release build when opponents are reduced to a duel.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ],
+        [
+          "food",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "29c1dc7fe5d2936a023da9a9d9311ccab8a012426ec4fa3317ff4ddea0ddf437",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 2.1041666666666665,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 115001,
+      "losses": 13,
+      "max_ms": 87.432,
+      "mode": "standard",
+      "opponent": "search",
+      "reference_average_place": 2.1041666666666665,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 11
+    }
+  },
+  "grid-style-food": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Release check against original food trainer on both starting sides.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "29c1dc7fe5d2936a023da9a9d9311ccab8a012426ec4fa3317ff4ddea0ddf437",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.0,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 116001,
+      "losses": 0,
+      "max_ms": 19.537,
+      "mode": "duels",
+      "opponent": "food",
+      "pairs": 6,
+      "points": 12.0,
+      "reference_average_place": 2.0,
+      "rotations": 2,
+      "seeds": 6,
+      "wins": 12
+    }
+  },
+  "grid-style-press": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Release check against original press trainer on both starting sides.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "29c1dc7fe5d2936a023da9a9d9311ccab8a012426ec4fa3317ff4ddea0ddf437",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.0,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 116201,
+      "losses": 0,
+      "max_ms": 19.075,
+      "mode": "duels",
+      "opponent": "press",
+      "pairs": 6,
+      "points": 12.0,
+      "reference_average_place": 2.0,
+      "rotations": 2,
+      "seeds": 6,
+      "wins": 12
+    }
+  },
+  "grid-style-space": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Release check against original space trainer on both starting sides.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "29c1dc7fe5d2936a023da9a9d9311ccab8a012426ec4fa3317ff4ddea0ddf437",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.0,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 116101,
+      "losses": 0,
+      "max_ms": 94.339,
+      "mode": "duels",
+      "opponent": "space",
+      "pairs": 6,
+      "points": 12.0,
+      "reference_average_place": 2.0,
+      "rotations": 2,
+      "seeds": 6,
+      "wins": 12
     }
   },
   "island-field-screen": {
@@ -2698,6 +3340,68 @@
       "wins": 12
     }
   },
+  "moving-land-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Independent holdout for dynamic territory around both tails after scoring 14 of 24 in screening.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "2f33d15f10ca32b4c7410fa4633b9fa0bc10bc0941f73d6fc32f3cc98d31ac6f",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.495,
+      "candidate": "search",
+      "draws": 1,
+      "first_seed": 103001,
+      "losses": 49,
+      "max_ms": 108.17,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 50,
+      "points": 50.5,
+      "reference_average_place": 1.505,
+      "rotations": 2,
+      "seeds": 50,
+      "wins": 50
+    }
+  },
+  "moving-land-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Recompute the next ten turns of contested territory as both long tails open cells; compare with static distance at the same horizon, Class B Super-Snake.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "2f33d15f10ca32b4c7410fa4633b9fa0bc10bc0941f73d6fc32f3cc98d31ac6f",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.4166666666666667,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 102001,
+      "losses": 10,
+      "max_ms": 19.034,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 12,
+      "points": 14.0,
+      "reference_average_place": 1.5833333333333333,
+      "rotations": 2,
+      "seeds": 12,
+      "wins": 14
+    }
+  },
   "outlast-default-screen": {
     "engine": "Battlesnake CLI v1.2.3",
     "hypothesis": "Favor a verified route lasting longer than a rival can move before the first elimination",
@@ -2814,6 +3518,68 @@
       "rotations": 4,
       "seeds": 6,
       "wins": 11
+    }
+  },
+  "refuel-proof-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Independent 100 for provable replenishment and survival, successful at ActionHero 64, 76 and 85 under every reply.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "81c4e13f78142edc1dd3175e79be973beacb8852a7411ea47a6eaedcc4250a2b",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.545,
+      "candidate": "search",
+      "draws": 1,
+      "first_seed": 110001,
+      "losses": 54,
+      "max_ms": 124.841,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 50,
+      "points": 45.5,
+      "reference_average_place": 1.455,
+      "rotations": 2,
+      "seeds": 50,
+      "wins": 45
+    }
+  },
+  "refuel-proof-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "When food is needed, find a guaranteed meal within five turns and survive two more against all legal replies; ActionHero turns 64, 76 and 85.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "81c4e13f78142edc1dd3175e79be973beacb8852a7411ea47a6eaedcc4250a2b",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.4166666666666667,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 106001,
+      "losses": 10,
+      "max_ms": 97.287,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 12,
+      "points": 14.0,
+      "reference_average_place": 1.5833333333333333,
+      "rotations": 2,
+      "seeds": 12,
+      "wins": 14
     }
   },
   "royale-arena-release-paired": {
@@ -3248,6 +4014,372 @@
       "wins": 12
     }
   },
+  "safe-territory-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Value safe territory over hazardous territory after shrinking begins; independent seat-paired control.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "3b828ebf384f00520ed9301160d4761b0763327d0e92e652154b00a3f4370d38",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 2.025,
+      "candidate": "search",
+      "draws": 12,
+      "first_seed": 98001,
+      "losses": 57,
+      "max_ms": 38.863,
+      "mode": "royale",
+      "opponent": "search",
+      "reference_average_place": 1.93,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 31
+    }
+  },
+  "safe-territory-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Give safe territory more weight than damaged cells once Royale has begun to shrink.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ],
+        [
+          "food",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "3b828ebf384f00520ed9301160d4761b0763327d0e92e652154b00a3f4370d38",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 2.3958333333333335,
+      "candidate": "search",
+      "draws": 1,
+      "first_seed": 96001,
+      "losses": 17,
+      "max_ms": 3.386,
+      "mode": "royale",
+      "opponent": "search",
+      "reference_average_place": 2.4166666666666665,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 6
+    }
+  },
+  "sampled-trails-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Sample simultaneous play through final placement in a compact Constrictor simulation, checked against 283 complete arena transitions.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ],
+        [
+          "food",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "cf8c47e078e7c6c72bc6850ca16e4e8f5c916dc3d8a2c19f461b334c5577aa68",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 2.2916666666666665,
+      "candidate": "search",
+      "draws": 1,
+      "first_seed": 117001,
+      "losses": 17,
+      "max_ms": 15.958,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.1458333333333335,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 6
+    }
+  },
+  "single-meal-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Require the contested hazard meal alone to finance a safe retreat when choosing its equally short approaches; independent seat-paired control.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "cc9b99445383716158826962a9a72ba1ff1ca236f915b5de3836182df91fbab1",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 2.025,
+      "candidate": "search",
+      "draws": 13,
+      "first_seed": 97001,
+      "losses": 55,
+      "max_ms": 10.276,
+      "mode": "royale",
+      "opponent": "search",
+      "reference_average_place": 2.065,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 32
+    }
+  },
+  "single-meal-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Only count a return from a corner meal that does not depend on another visible food still being available.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ],
+        [
+          "food",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "cc9b99445383716158826962a9a72ba1ff1ca236f915b5de3836182df91fbab1",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 1.9791666666666667,
+      "candidate": "search",
+      "draws": 4,
+      "first_seed": 95001,
+      "losses": 10,
+      "max_ms": 7.317,
+      "mode": "royale",
+      "opponent": "search",
+      "reference_average_place": 1.9791666666666667,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 10
+    }
+  },
+  "standard-choices-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Confirm the two escape routes on 25 new Standard starts with four fixed-seat permutations per start.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "6d3928702b73871b5b701062d081a39aae64cd89e93c4836f9ce0a5db84f2473",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 2.17,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 92001,
+      "losses": 64,
+      "max_ms": 35.546,
+      "mode": "standard",
+      "opponent": "search",
+      "reference_average_place": 2.13,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 36
+    }
+  },
+  "standard-choices-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Prefer positions with two independently survivable exits instead of counting only the best four-turn path.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ],
+        [
+          "food",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "6d3928702b73871b5b701062d081a39aae64cd89e93c4836f9ce0a5db84f2473",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 2.25,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 91001,
+      "losses": 15,
+      "max_ms": 11.047,
+      "mode": "standard",
+      "opponent": "search",
+      "reference_average_place": 2.8333333333333335,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 9
+    }
+  },
   "standard-pocket-head-control": {
     "engine": "Battlesnake CLI v1.2.3",
     "hypothesis": "In small pockets with a proven tail exit, choose the end farther from an equal or longer opponent if static bodies hide it",
@@ -3542,6 +4674,110 @@
       "rotations": 4,
       "seeds": 6,
       "wins": 9
+    }
+  },
+  "timed-trail-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Independent 100 for the six-turn trail removal that chooses the replay-surviving up on turn 17 against Class B.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "2e84638269f9f13a8e4ea9a4d4f4fcaa340114ce85d1f25ba53236f361dff177",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 2.55,
+      "candidate": "search",
+      "draws": 18,
+      "first_seed": 113001,
+      "losses": 64,
+      "max_ms": 23.076,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.53,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 18
+    }
+  },
+  "timed-trail-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Wait for an isolated rival trail to disappear after its remaining free cells run out, while allowing a competing opponent to cut off each first choice.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ],
+        [
+          "food",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "2e84638269f9f13a8e4ea9a4d4f4fcaa340114ce85d1f25ba53236f361dff177",
+      "reference": "81729307a33f854f559577b86668fc6ab43441cf26f87b76a75e6b2ed665705f"
+    },
+    "summary": {
+      "average_place": 2.5208333333333335,
+      "candidate": "search",
+      "draws": 6,
+      "first_seed": 112001,
+      "losses": 14,
+      "max_ms": 2.75,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.5208333333333335,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 4
     }
   }
 }

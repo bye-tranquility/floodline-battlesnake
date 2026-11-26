@@ -48,11 +48,17 @@ func (p position) choices(s serpent, blocked []bool, preferred direction) moveLi
 
 func (s *duelSearch) evaluate(p position) int {
 	me, them := p.snakes[0], p.snakes[1]
-	p.occupied(s.blocked)
-	our := s.walk(p, me.body[0], s.own)
-	their := s.walk(p, them.body[0], s.other)
 	gap := len(me.body) - len(them.body)
-	land := territory(s.own, s.other, gap) - territory(s.other, s.own, -gap)
+	var our, their region
+	var land int
+	if p.plainDuelGrid {
+		our, their, land = s.duelRegions(p, gap)
+	} else {
+		p.occupied(s.blocked)
+		our = s.walk(p, me.body[0], s.own)
+		their = s.walk(p, them.body[0], s.other)
+		land = territory(s.own, s.other, gap) - territory(s.other, s.own, -gap)
+	}
 	score := spaceScore(our, len(me.body)) - spaceScore(their, len(them.body))
 	score += land*3 + p.centerDistance(them.body[0]) - p.centerDistance(me.body[0])
 	if p.constrictor {
