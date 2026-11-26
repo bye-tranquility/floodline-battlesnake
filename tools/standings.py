@@ -61,11 +61,10 @@ def standing(board_id, table, snake_id):
 def global_ranking():
     path = '/rankings'
     visited = set()
-    cutoff = None
+    player = cutoff = None
     while path not in visited:
         visited.add(path)
         html = fetch(path)
-        mine = None
         for row in re.findall(r'<tr\b[^>]*>(.*?)</tr>', html, re.S):
             rank = re.search(r'<td class="rank">(\d+)</td>', row)
             score = re.search(r'<span class="total">([\d.]+)</span>', row)
@@ -74,14 +73,27 @@ def global_ranking():
             if int(rank[1]) == 30:
                 cutoff = float(score[1])
             if f'href="{PLAYER}"' in row:
-                mine = {'rank': int(rank[1]), 'score': float(score[1])}
-        if mine:
-            return mine, cutoff
+                player = {'rank': int(rank[1]), 'score': float(score[1])}
+        if player and cutoff is not None:
+            return player, cutoff
         next_page = re.search(r'<a[^>]*href="(/rankings\?[^"#]+)"[^>]*>\s*Next', html)
         if not next_page:
-            return None, cutoff
+            return player, cutoff
         path = unescape(next_page[1])
     raise ValueError('Arena rankings pagination repeated a page')
+
+
+def gaps(duel, refs, player, cutoff):
+    ahead = [(row['rank'], name, row) for name, row in refs.items()
+             if duel['rank'] is not None and row['rank'] is not None and row['rank'] <= duel['rank']]
+    next_reference = None
+    if ahead:
+        rank, name, row = max(ahead, key=lambda entry: entry[0])
+        next_reference = {'name': name, 'score_gap': round(max(0, row['score']-duel['score']), 2),
+                          'places_to_pass': duel['rank']-rank+1}
+    return {'next_duel_reference': next_reference,
+            'global_score_gap': round(max(0, cutoff-player['score']), 1) if player and cutoff is not None else None,
+            'global_places_to_top_30': max(0, player['rank']-30) if player else None}
 
 
 def main():
@@ -97,7 +109,8 @@ def main():
     print(json.dumps({'as_of_utc': datetime.now(timezone.utc).isoformat(timespec='seconds'),
                       'profile': f'{ARENA}/battlesnakes/{FLOODLINE}/profile', 'boards': own,
                       'duel_references': refs, 'above': beaten, 'global_player': player,
-                      'top_30_cutoff': cutoff, 'provisional_arena_points': points}, indent=2))
+                      'top_30_cutoff': cutoff, 'gaps': gaps(own['Duels'], refs, player, cutoff),
+                      'provisional_arena_points': points}, indent=2))
 
 
 if __name__ == '__main__':

@@ -71,6 +71,30 @@
       "wins": 45
     }
   },
+  "constrictor-gate-original-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Independently check the improved gate evaluator against the original v0.4.1 reference",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "652319d8396ce97a59103ce633984b85693b3c4157199e781b61619af5e43103",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.75,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 28001,
+      "losses": 51,
+      "max_ms": 5.182,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.195,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 49
+    }
+  },
   "constrictor-gate-screen": {
     "engine": "Battlesnake CLI v1.2.3",
     "hypothesis": "A rival can seal the open edge in three or four turns before our body clears the corner",

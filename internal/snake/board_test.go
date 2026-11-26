@@ -203,6 +203,30 @@ func TestRoyaleArrivalHealthAndRetreat(t *testing.T) {
 	}
 }
 
+func TestConstrictorThirdTurnCut(t *testing.T) {
+	score := func(enemyCell int) int {
+		r := setup("constrictor", [][]int{{14, 7, 0, 0}, {enemyCell, enemyCell, enemyCell}}, []int{100, 100}, nil, nil)
+		p, err := r.position()
+		if err != nil {
+			t.Fatal(err)
+		}
+		a := newAnalysis(len(p.food))
+		p.occupied(a.blocked)
+		// Two rooms with a single gate at (3,3). Moving from (0,3)
+		// takes three further steps to reach it.
+		for y := 0; y < 7; y++ {
+			a.blocked[y*7+3] = y != 3
+		}
+		const entry = 21
+		room := a.walk(p, entry, a.own)
+		var check chokeCheck
+		return check.score(p, a, entry, room.area)
+	}
+	if near, far := score(27), score(48); near >= far {
+		t.Fatalf("rival three steps from the gate scored %d, distant rival %d", near, far)
+	}
+}
+
 func TestMultiplayerEscapeBeforeReachingWall(t *testing.T) {
 	// Standard seed 4102, turn 21. Moving down led into a pocket for
 	// the following four turns. The right exit is still open on this turn.
