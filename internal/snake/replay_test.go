@@ -58,6 +58,27 @@ func TestEscapeAtWhiravFork(t *testing.T) {
 	t.Fatal("missing Whirav fork")
 }
 
+func TestApproachFoodWhenFiveSegmentsBehind(t *testing.T) {
+	for _, req := range readReplay(t, "duels-olej") {
+		if req.Turn != 54 {
+			continue
+		}
+		p, err := req.position()
+		if err != nil {
+			t.Fatal(err)
+		}
+		if len(p.snakes[1].body)-len(p.snakes[0].body) != 5 || !p.food[4*p.width+7] {
+			t.Fatal("expected a five-segment deficit and food at (7,4)")
+		}
+		got := replayMove(t, &req)
+		if got != right && got != down {
+			t.Fatalf("turn 54 against Olej1: %s takes the head further from food", names[got])
+		}
+		return
+	}
+	t.Fatal("missing Olej1 turn 54")
+}
+
 func TestWinningDuelAndStandardEndings(t *testing.T) {
 	records := readReplay(t, "wins")
 	if len(records) != 24 {

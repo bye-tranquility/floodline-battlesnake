@@ -62,6 +62,11 @@ func (s *duelSearch) evaluate(p position) int {
 		score += s.escape.score(p, me, them, our, s.other) - s.escape.score(p, them, me, their, s.own)
 	}
 	score += min(3, max(-3, gap))*95 + gap*8
+	if !p.royale {
+		// A fourth length deficit still makes it easier for the opponent to
+		// take the next food and seal a corridor. Keep valuing recovery.
+		score += 60 * (min(9, max(-9, gap)) - min(3, max(-3, gap)))
+	}
 	score += nutrition(our, me.health, gap) - nutrition(their, them.health, -gap)
 	score += max(0, 40-them.health)*2 - max(0, 40-me.health)*2
 	score += min(30, their.safe)*3 - min(30, our.safe)*3
