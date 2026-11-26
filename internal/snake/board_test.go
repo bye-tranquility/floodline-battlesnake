@@ -137,10 +137,29 @@ func TestConstrictorTrailHasAnExit(t *testing.T) {
 	a.nearest[11] = 4 // the opponent can contest our fourth square
 	before := slices.Clone(a.blocked)
 	remaining := 240
-	if n := a.trail(p, 8, 1, &remaining); n != 2 {
+	if n := a.trail(p, 8, 1, 14, &remaining); n != 2 {
 		t.Fatalf("safe continuation has %d moves, want 2", n)
 	}
 	if !slices.Equal(before, a.blocked) {
 		t.Fatal("trail search changed the board")
+	}
+}
+
+func TestMultiplayerEscapeBeforeReachingWall(t *testing.T) {
+	// Standard seed 4102, turn 21. Moving down led into a pocket for
+	// the following four turns. The right exit is still open on this turn.
+	var r Request
+	r.Board.Width, r.Board.Height = 11, 11
+	r.Board.Food = []Point{{9, 9}, {1, 4}, {10, 1}}
+	r.Board.Snakes = []WireSnake{
+		{ID: "east", Health: 93, Body: []Point{{7, 6}, {6, 6}, {6, 7}, {6, 8}, {6, 9}, {7, 9}}},
+		{ID: "north", Health: 87, Body: []Point{{3, 8}, {4, 8}, {4, 9}, {4, 10}, {3, 10}}},
+		{ID: "us", Health: 81, Body: []Point{{3, 6}, {3, 7}, {2, 7}, {1, 7}}},
+		{ID: "south", Health: 98, Body: []Point{{4, 3}, {4, 2}, {4, 1}, {5, 1}, {6, 1}, {7, 1}, {8, 1}}},
+	}
+	r.You = r.Board.Snakes[2]
+	got, err := Decide(&r, time.Now(), Options{Style: "search"})
+	if err != nil || got.Move != "right" {
+		t.Fatalf("escape move = %+v, error = %v", got, err)
 	}
 }

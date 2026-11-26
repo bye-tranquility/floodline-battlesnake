@@ -152,9 +152,17 @@ func (p position) steer(a *analysis, style string) direction {
 		}
 		if p.constrictor {
 			score += r.area + claimed
-			if style == "search" && len(p.snakes) > 2 {
+		}
+		if style == "search" && len(p.snakes) > 2 {
+			if p.constrictor {
 				remaining := 240
-				score += 110 * a.trail(p, c, 1, &remaining)
+				score += 110 * a.trail(p, c, 1, 14, &remaining)
+			} else {
+				// Bodies can move away in these modes. Look only a few turns
+				// ahead for an escape before penalizing a crowded pocket.
+				const escapeMoves = 4
+				remaining := 60
+				score -= 90 * (escapeMoves - a.trail(p, c, 1, 1+escapeMoves, &remaining))
 			}
 		}
 		if p.damage[c] > 0 {
@@ -183,10 +191,10 @@ func (p position) steer(a *analysis, style string) direction {
 	return chosen
 }
 
-// In Constrictor each square can be visited only once. Count a path we can
-// claim before a rival, not every branch of a chamber we can enter only once.
-func (a *analysis) trail(p position, cell, arrival int, remaining *int) int {
-	if arrival >= 14 || *remaining <= 0 {
+// Length of a continuous path through distinct cells that our snake can claim
+// before a rival. The depth and the node budget bound the work per move.
+func (a *analysis) trail(p position, cell, arrival, horizon int, remaining *int) int {
+	if arrival >= horizon || *remaining <= 0 {
 		return 0
 	}
 	*remaining = *remaining - 1
@@ -197,8 +205,8 @@ func (a *analysis) trail(p position, cell, arrival int, remaining *int) int {
 		if to < 0 || a.blocked[to] || a.nearest[to] <= arrival+1 {
 			continue
 		}
-		best = max(best, 1+a.trail(p, to, arrival+1, remaining))
-		if best >= 14-arrival {
+		best = max(best, 1+a.trail(p, to, arrival+1, horizon, remaining))
+		if best >= horizon-arrival {
 			break
 		}
 	}

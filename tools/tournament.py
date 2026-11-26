@@ -93,7 +93,9 @@ def play(args, router, seed, side):
     path = out / f"{seed}-{side}.jsonl"
     rules = "standard" if args.mode in ("duels", "standard") else args.mode
     board = "royale" if args.mode == "royale" else "standard"
-    cmd = [args.cli, "play", "-W", "11", "-H", "11", "-g", rules, "-m", board,
+    # All seats share one router. Sequential HTTP reads the same turn for every
+    # snake while letting the CLI reuse a connection throughout long tournaments.
+    cmd = [args.cli, "play", "--sequential", "-W", "11", "-H", "11", "-g", rules, "-m", board,
            "--seed", str(seed), "--timeout", "500", "--output", str(path)]
     if rules == "constrictor":
         cmd += ["--minimumFood", "0", "--foodSpawnChance", "0"]
@@ -104,7 +106,10 @@ def play(args, router, seed, side):
     run = subprocess.run(cmd, capture_output=True, text=True, timeout=240,
                          env=dict(os.environ, GODEBUG="randseednop=0"))
     if run.returncode or router.errors or "WARN " in run.stderr or "ERROR " in run.stderr:
-        raise RuntimeError(f"{router.errors} {run.stderr[-1800:]}")
+        diagnostics = [line for line in run.stderr.splitlines()
+                       if line.startswith(("WARN ", "ERROR ", "\t"))]
+        detail = "\n".join(diagnostics) or run.stderr
+        raise RuntimeError(f"seed {seed} side {side}: {router.errors} {detail[-1800:]}")
     with path.open() as f:
         rows = [json.loads(line) for line in f]
     frames, result = rows[1:-1], rows[-1]
