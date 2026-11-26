@@ -58,6 +58,42 @@ func TestEscapeAtWhiravFork(t *testing.T) {
 	t.Fatal("missing Whirav fork")
 }
 
+func TestInterceptDenoMBeforeEnteringEdgeCorridor(t *testing.T) {
+	for _, req := range readReplay(t, "duels-denom") {
+		if req.Turn != 238 {
+			continue
+		}
+		if req.You.Body[0] != (Point{8, 2}) || len(req.You.Body) != 22 {
+			t.Fatal("expected DenoM's approach to the east wall")
+		}
+		if got := replayMove(t, &req); got != up {
+			t.Fatalf("turn 238: chose %s; up intercepts the recorded opponent four moves later", names[got])
+		}
+		return
+	}
+	t.Fatal("missing DenoM turn 238")
+}
+
+func TestMoveOrderingPreservesCompletedDuelScores(t *testing.T) {
+	for _, req := range readReplay(t, "duels-denom") {
+		p, err := req.position()
+		if err != nil {
+			t.Fatal(err)
+		}
+		search := func() duelSearch {
+			return duelSearch{analysis: newAnalysis(len(p.food)), deadline: time.Now().Add(time.Second), limit: 100000}
+		}
+		normal, ordered := search(), search()
+		ordered.history = make(map[uint64]lineOrder)
+		ordered.best(p, 2, 0, -infinity, infinity, -1, 1)
+		_, want, complete := normal.best(p, 3, 0, -infinity, infinity, -1, 1)
+		_, got, done := ordered.best(p, 3, 0, -infinity, infinity, -1, 1)
+		if !complete || !done || got != want {
+			t.Fatalf("turn %d: ordered score %d, original %d, completed %v/%v", req.Turn, got, want, done, complete)
+		}
+	}
+}
+
 func TestApproachFoodWhenFiveSegmentsBehind(t *testing.T) {
 	for _, req := range readReplay(t, "duels-olej") {
 		if req.Turn != 54 {

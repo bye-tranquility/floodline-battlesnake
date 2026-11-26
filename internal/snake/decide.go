@@ -38,6 +38,9 @@ func Decide(r *Request, started time.Time, opts Options) (Decision, error) {
 		}
 	}
 	search := duelSearch{analysis: a, deadline: started.Add(budget), limit: opts.NodeLimit}
+	if p.plainDuelGrid {
+		search.history = make(map[uint64]lineOrder, 128)
+	}
 	if opts.NodeLimit == 1200 && !p.royale && !p.constrictor {
 		if a.tightDuel(p) {
 			search.limit = 4800
@@ -50,7 +53,7 @@ func Decide(r *Request, started time.Time, opts Options) (Decision, error) {
 	}
 	preferred := fallback
 	for depth := 1; depth <= 16; depth++ {
-		move, score, complete := search.best(p, depth, 0, -infinity, infinity, preferred)
+		move, score, complete := search.best(p, depth, 0, -infinity, infinity, preferred, 1)
 		if !complete {
 			break
 		}

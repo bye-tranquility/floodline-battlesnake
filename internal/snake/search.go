@@ -7,13 +7,30 @@ const victory = 100_000
 type duelSearch struct {
 	*analysis
 	escape       pocketEscape
+	history      map[uint64]lineOrder
 	deadline     time.Time
 	limit, nodes int
+}
+
+type lineOrder struct {
+	ours    direction
+	replies [4]direction
 }
 
 type moveList struct {
 	moves [4]direction
 	count int
+}
+
+func (moves moveList) prefer(hint direction) moveList {
+	for i, m := range moves.moves[:moves.count] {
+		if m == hint {
+			copy(moves.moves[1:i+1], moves.moves[:i])
+			moves.moves[0] = m
+			break
+		}
+	}
+	return moves
 }
 
 func (p position) choices(s serpent, blocked []bool, preferred direction) moveList {
@@ -85,14 +102,27 @@ func (s *duelSearch) evaluate(p position) int {
 
 // Both players choose from the same board. Apply each pair of moves together,
 // maximize the worst reply, and propagate bounds between simultaneous turns.
-func (s *duelSearch) best(p position, depth, ply, alpha, beta int, preferred direction) (direction, int, bool) {
+func (s *duelSearch) best(p position, depth, ply, alpha, beta int, preferred direction, path uint64) (direction, int, bool) {
 	p.occupied(s.blocked)
 	our := p.choices(p.snakes[0], s.blocked, preferred)
 	their := p.choices(p.snakes[1], s.blocked, -1)
+	// Earlier depths of this request suggest which legal moves to try first.
+	// Every score is recomputed at the current depth.
+	hints, seen := s.history[path]
+	if seen && preferred < 0 {
+		our = our.prefer(hints.ours)
+	}
+	if !seen {
+		hints.replies = [4]direction{-1, -1, -1, -1}
+	}
 	best, bestMove := -infinity, our.moves[0]
 	for _, m := range our.moves[:our.count] {
 		worst := infinity
-		for _, reply := range their.moves[:their.count] {
+		replies := their
+		if seen {
+			replies = their.prefer(hints.replies[m])
+		}
+		for _, reply := range replies.moves[:replies.count] {
 			if s.nodes >= s.limit || (s.nodes%8 == 0 && !time.Now().Before(s.deadline)) {
 				return bestMove, 0, false
 			}
@@ -115,12 +145,17 @@ func (s *duelSearch) best(p position, depth, ply, alpha, beta int, preferred dir
 				score = s.evaluate(next)
 			default:
 				var complete bool
-				_, score, complete = s.best(next, depth-1, ply+1, alpha, min(beta, worst), -1)
+				// Four bits identify one joint turn. The depth limit keeps the full
+				// ordered line in one word, including the leading root marker.
+				nextPath := path<<4 | uint64(m)<<2 | uint64(reply)
+				_, score, complete = s.best(next, depth-1, ply+1, alpha, min(beta, worst), -1, nextPath)
 				if !complete {
 					return bestMove, 0, false
 				}
 			}
-			worst = min(worst, score)
+			if score < worst {
+				worst, hints.replies[m] = score, reply
+			}
 			if worst <= alpha {
 				break
 			}
@@ -132,6 +167,10 @@ func (s *duelSearch) best(p position, depth, ply, alpha, beta int, preferred dir
 		if alpha >= beta {
 			break
 		}
+	}
+	if s.history != nil {
+		hints.ours = bestMove
+		s.history[path] = hints
 	}
 	return bestMove, best, true
 }
