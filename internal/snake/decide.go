@@ -19,5 +19,31 @@ func Decide(r *Request, started time.Time, opts Options) (Decision, error) {
 	}
 	a := newAnalysis(len(p.food))
 	fallback := p.steer(a, opts.Style)
-	return Decision{Move: names[fallback]}, nil
+	result := Decision{Move: names[fallback]}
+	if opts.Style != "search" || len(p.snakes) != 2 {
+		return result, nil
+	}
+	timeout := r.Game.Timeout
+	if timeout == 0 {
+		timeout = 500
+	}
+	budget := min(opts.Budget, 120*time.Millisecond, time.Duration(timeout-150)*time.Millisecond)
+	if budget <= 0 {
+		return result, nil
+	}
+	search := duelSearch{analysis: a, deadline: started.Add(budget), limit: opts.NodeLimit}
+	preferred := fallback
+	for depth := 1; depth <= 16; depth++ {
+		move, score, complete := search.best(p, depth, 0, -infinity, infinity, preferred)
+		if !complete {
+			break
+		}
+		preferred = move
+		result.Move, result.Depth = names[move], depth
+		if abs(score) >= victory-depth {
+			break
+		}
+	}
+	result.Nodes = search.nodes
+	return result, nil
 }

@@ -61,7 +61,7 @@ func (s *service) move(w http.ResponseWriter, r *http.Request) {
 	}
 	opts := s.opts
 	// Keep independent concurrent games responsive on a single core.
-	if opts.Style == "search" {
+	if opts.Style == "search" && len(req.Board.Snakes) == 2 {
 		select {
 		case s.searchSlot <- struct{}{}:
 			defer func() { <-s.searchSlot }()
@@ -113,7 +113,7 @@ func main() {
 		log.Fatal("unknown STYLE")
 	}
 	s := service{opts: snake.Options{Style: style, Budget: time.Duration(budget) * time.Millisecond, NodeLimit: nodes}, searchSlot: make(chan struct{}, 1), capture: os.Getenv("CAPTURE_SAMPLES") == "1", quiet: os.Getenv("QUIET") == "1"}
-	addr := ":" + value("PORT", "8080")
+	addr := os.Getenv("BIND_HOST") + ":" + value("PORT", "8080")
 	log.Printf("Floodline %s listening on %s (%s)", version, addr, style)
 	server := http.Server{Addr: addr, Handler: s.handler(), ReadHeaderTimeout: 3 * time.Second, ReadTimeout: 5 * time.Second, WriteTimeout: 2 * time.Second}
 	log.Fatal(server.ListenAndServe())
