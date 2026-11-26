@@ -26,7 +26,7 @@ func TestGridNeighborsMatchBoard(t *testing.T) {
 }
 
 func TestPlainDuelTerritoryMatchesFloodFill(t *testing.T) {
-	for _, corpus := range []string{"duels", "duels-approach", "duels-olej", "wins"} {
+	for _, corpus := range []string{"duels", "duels-approach", "duels-olej", "duels-olej-rematch", "wins"} {
 		for _, r := range readReplay(t, corpus) {
 			p, err := r.position()
 			if err != nil {
@@ -41,7 +41,27 @@ func TestPlainDuelTerritoryMatchesFloodFill(t *testing.T) {
 			us := original.walk(p, me.body[0], original.own)
 			them := original.walk(p, foe.body[0], original.other)
 			gap := len(me.body) - len(foe.body)
-			land := territory(original.own, original.other, gap) - territory(original.other, original.own, -gap)
+			land := 0
+			for cell, ours := range original.own {
+				theirs := original.other[cell]
+				if min(ours, theirs) > 7 {
+					continue
+				}
+				weight := 1
+				if min(ours, theirs) <= 4 {
+					weight = 3
+				}
+				switch {
+				case ours < theirs:
+					land += 2 * weight
+				case theirs < ours:
+					land -= 2 * weight
+				case gap > 0:
+					land += weight
+				case gap < 0:
+					land -= weight
+				}
+			}
 			search := duelSearch{analysis: newAnalysis(len(p.food))}
 			fastUs, fastThem, fastLand := search.duelRegions(p, gap)
 			if fastUs != us || fastThem != them || fastLand != land {

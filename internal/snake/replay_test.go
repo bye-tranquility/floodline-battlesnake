@@ -197,3 +197,31 @@ func TestEscapeAtClassBFork(t *testing.T) {
 	}
 	t.Fatal("missing Class B turn 232")
 }
+
+func TestTakeFoodAfterMissingMealsInDuels(t *testing.T) {
+	for _, tc := range []struct {
+		corpus, game string
+		turn, health int
+		food         Point
+		move         direction
+	}{
+		{"duels-olej-rematch", "db3542c3-588b-4b7e-98b5-952d415c0d0d", 97, 5, Point{1, 3}, left},
+		{"duels-actionhero-classb", "94110afd-c621-48b8-8c4e-2e85769ec2a1", 85, 17, Point{3, 1}, down},
+	} {
+		t.Run(tc.corpus, func(t *testing.T) {
+			for _, req := range readReplay(t, tc.corpus) {
+				if req.Game.ID != tc.game || req.Turn != tc.turn {
+					continue
+				}
+				if req.You.Health != tc.health || !slices.Contains(req.Board.Food, tc.food) {
+					t.Fatal("missing the recorded food or health")
+				}
+				if got := replayMove(t, &req); got != tc.move {
+					t.Fatalf("turn %d: chose %s, expected %s towards food", tc.turn, names[got], names[tc.move])
+				}
+				return
+			}
+			t.Fatalf("missing turn %d", tc.turn)
+		})
+	}
+}

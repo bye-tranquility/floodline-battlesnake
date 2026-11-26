@@ -74,8 +74,8 @@ func fillArrivals(blocked, start cells11, dst []int) {
 	}
 }
 
-// Both frontiers advance one turn at a time. A cell reached simultaneously
-// counts for the longer snake; a cell reached first counts for its owner.
+// Both frontiers advance one turn at a time. The longer head wins a tie.
+// Keep counting reachable space and food after the territory horizon.
 func (s *duelSearch) duelRegions(p position, gap int) (region, region, int) {
 	me, them := p.snakes[0], p.snakes[1]
 	var blocked, food cells11
@@ -107,14 +107,19 @@ func (s *duelSearch) duelRegions(p position, gap int) (region, region, int) {
 		foe = foe.neighbors().without(blocked.union(theirSeen))
 		owned := us.without(theirSeen)
 		lost := foe.without(ourSeen)
-		land += 2 * (owned.count() - lost.count())
-		if gap != 0 {
-			ties := us.both(foe).count()
-			if gap > 0 {
-				land += ties
-			} else {
-				land -= ties
+		if step <= 7 {
+			weight := 1
+			if step <= 4 {
+				weight = 3
 			}
+			delta := 2 * (owned.count() - lost.count())
+			switch {
+			case gap > 0:
+				delta += us.both(foe).count()
+			case gap < 0:
+				delta -= us.both(foe).count()
+			}
+			land += weight * delta
 		}
 		if step == 1 {
 			our.exits, their.exits = us.count(), foe.count()

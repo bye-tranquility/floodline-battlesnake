@@ -57,12 +57,16 @@ func (s *duelSearch) evaluate(p position) int {
 		p.occupied(s.blocked)
 		our = s.walk(p, me.body[0], s.own)
 		their = s.walk(p, them.body[0], s.other)
-		land = territory(s.own, s.other, gap) - territory(s.other, s.own, -gap)
+		weight := 3
+		if p.constrictor {
+			weight = 5
+		}
+		land = weight * (territory(s.own, s.other, gap) - territory(s.other, s.own, -gap))
 	}
 	score := spaceScore(our, len(me.body)) - spaceScore(their, len(them.body))
-	score += land*3 + p.centerDistance(them.body[0]) - p.centerDistance(me.body[0])
+	score += land + p.centerDistance(them.body[0]) - p.centerDistance(me.body[0])
 	if p.constrictor {
-		return score + land*2 + 3*(our.area-their.area)
+		return score + 3*(our.area-their.area)
 	}
 	if !p.royale {
 		score += s.escape.score(p, me, them, our, s.other) - s.escape.score(p, them, me, their, s.own)
