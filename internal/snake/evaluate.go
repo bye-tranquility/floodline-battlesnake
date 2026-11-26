@@ -123,19 +123,34 @@ func (p position) steer(a *analysis, style string) direction {
 		longest = max(longest, len(s.body))
 	}
 	best, chosen := -infinity, up
+	checkPassages := p.constrictor && style == "search" && len(p.snakes) > 2 && len(p.food) <= 169
+	if checkPassages {
+		for _, cell := range p.next[ahead.body[0]] {
+			if cell >= 0 && !a.blocked[cell] && a.nearest[cell] < 6 {
+				checkPassages = false
+				break
+			}
+		}
+	}
 	var choke chokeCheck
 	for move, c := range p.next[ahead.body[0]] {
 		if c < 0 || a.blocked[c] || p.nextHealth(ahead, c) <= 0 {
 			continue
 		}
 		r := a.walk(p, c, a.own)
+		inaccessible := 0
+		if checkPassages {
+			bound := a.passageBound(p, c)
+			inaccessible = min(48, r.area) - min(48, bound)
+			r.area = bound
+		}
 		length := len(ahead.body)
 		if p.food[c] {
 			length++
 		}
 		gap := length - longest
 		hp := p.nextHealth(ahead, c)
-		score := spaceScore(r, length) - p.centerDistance(c)
+		score := spaceScore(r, length) - p.centerDistance(c) - 36*inaccessible
 		claimed := territory(a.own, a.nearest, gap)
 		if routes != nil {
 			var penalty int

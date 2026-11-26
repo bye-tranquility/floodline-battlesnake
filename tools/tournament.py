@@ -99,11 +99,19 @@ def play(args, router, seed, side):
     path = out / f"{seed}-{side}.jsonl"
     rules = "standard" if args.mode in ("duels", "standard") else args.mode
     board = "royale" if args.mode == "royale" else "standard"
+    if args.arena_game:
+        rules = args.arena_game["ruleset"]["name"]
+        board = args.arena_game["map"]
     # All seats share one router. Sequential HTTP reads the same turn for every
     # snake while letting the CLI reuse a connection throughout long tournaments.
     cmd = [args.cli, "play", "--sequential", "-W", "11", "-H", "11", "-g", rules, "-m", board,
            "--seed", str(seed), "--timeout", "500", "--output", str(path)]
-    if rules == "constrictor":
+    if args.arena_game:
+        settings = args.arena_game["ruleset"]["settings"]
+        for key in ("minimumFood", "foodSpawnChance", "hazardDamagePerTurn"):
+            cmd += ["--"+key, str(settings[key])]
+        cmd += ["--shrinkEveryNTurns", str(settings["royale"]["shrinkEveryNTurns"])]
+    elif rules == "constrictor":
         cmd += ["--minimumFood", "0", "--foodSpawnChance", "0"]
     for i in range(len(router.seats)):
         cmd += ["--name", f"Seat{i}", "--url", f"http://127.0.0.1:{router.server_port}"]
@@ -149,6 +157,12 @@ def main():
     parser.add_argument("--seeds", type=int, default=12)
     parser.add_argument("--rotations", type=int, choices=(2, 4), default=2,
                         help="swap the two contestants or rotate all four actual starting cells")
+    parser.add_argument("--seat-order", choices=("cyclic", "paired"), default="cyclic",
+                        help="paired compares both versions on all four cells with identical neighbors per pair")
+    parser.add_argument("--field-styles", nargs=2, choices=("search", "baseline", "food", "space", "press"),
+                        default=("food", "press"), metavar=("TRAINER1", "TRAINER2"))
+    parser.add_argument("--rules-profile", choices=("arena", "legacy"), default="arena",
+                        help="use settings captured from the rated arena, or reproduce the original CLI configuration")
     parser.add_argument("--first-seed", type=int, default=1001)
     parser.add_argument("--out", required=True)
     parser.add_argument("--hypothesis", default="", help="description to keep with the results")
@@ -157,6 +171,13 @@ def main():
         parser.error("--seeds must be positive")
     if args.mode == "duels" and args.rotations != 2:
         parser.error("duels have two starting cells")
+    if args.seat_order == "paired" and args.rotations != 4:
+        parser.error("paired seats require a four-player match with four rotations")
+    args.arena_game = None
+    if args.rules_profile == "arena":
+        fixture = Path(__file__).resolve().parents[1] / "testdata" / "arena" / (args.mode + ".json")
+        game = json.loads(fixture.read_text())["game"]
+        args.arena_game = {key: game[key] for key in ("map", "ruleset")}
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     log = out / "games.jsonl"
@@ -171,7 +192,8 @@ def main():
     with contextlib.ExitStack() as stack, ThreadingHTTPServer(("127.0.0.1", 0), SeatRouter) as router:
         styles = {"candidate": args.candidate, "reference": args.opponent}
         if args.mode != "duels":
-            styles.update(forager="food", pressure="press")
+            labels = ("forager", "pressure") if tuple(args.field_styles) == ("food", "press") else ("trainer1", "trainer2")
+            styles.update(zip(labels, args.field_styles))
         router.players = {k: stack.enter_context(player(
             args.reference_binary if k != "candidate" and args.reference_binary else args.binary, v))
             for k, v in styles.items()}
@@ -184,7 +206,12 @@ def main():
                 for seed in range(args.first_seed, args.first_seed + args.seeds):
                     order = list(styles)
                     for side in range(args.rotations):
-                        if args.rotations == 4:
+                        if args.seat_order == "paired":
+                            # Only the contestants exchange cells in each pair.
+                            # Both play once on each of the four physical starts.
+                            a, b, c, d = order
+                            router.seats = ((a, b, c, d), (b, a, c, d), (c, d, a, b), (c, d, b, a))[side]
+                        elif args.rotations == 4:
                             router.seats = order[side:] + order[:side]
                         else:
                             router.seats = order[:] if side == 0 else [order[1], order[0], *order[2:]]

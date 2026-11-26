@@ -126,3 +126,40 @@ func TestSeparatedChamberAgainstHoveringHobbs(t *testing.T) {
 		t.Fatal("hypothetical trail altered the actual position")
 	}
 }
+
+func TestPermanentPassagesWithDistantRivals(t *testing.T) {
+	records := readReplay(t, "constrictor-passages")
+	expected := []struct{ turn, area, downBound, leftBound int }{
+		{14, 32, 21, 29}, // ActionHero
+		{11, 70, 25, 31}, // Moses' Staff
+	}
+	if len(records) != len(expected) {
+		t.Fatalf("expected two passage positions, got %d", len(records))
+	}
+	for i, req := range records {
+		p, err := req.position()
+		if err != nil {
+			t.Fatal(err)
+		}
+		a := newAnalysis(len(p.food))
+		p.occupied(a.blocked)
+		want := expected[i]
+		if req.Turn != want.turn {
+			t.Fatalf("unexpected turn %d", req.Turn)
+		}
+		for _, choice := range []struct {
+			move  direction
+			bound int
+		}{{down, want.downBound}, {left, want.leftBound}} {
+			cell := p.next[p.snakes[0].body[0]][choice.move]
+			area := a.walk(p, cell, a.own).area
+			bound := a.passageBound(p, cell)
+			if area != want.area || bound != choice.bound {
+				t.Fatalf("turn %d moving %s: area %d, path bound %d", req.Turn, names[choice.move], area, bound)
+			}
+		}
+		if got := replayMove(t, &req); got != left {
+			t.Fatalf("turn %d: chose %s, expected the left passage", req.Turn, names[got])
+		}
+	}
+}
