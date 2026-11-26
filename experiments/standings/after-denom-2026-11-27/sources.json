@@ -1,0 +1,125 @@
+{
+  "standings_as_of_utc": "2026-11-26T23:19:25+00:00",
+  "pages": [
+    {
+      "file": "duels-1.png",
+      "url": "https://arena.battlesnake.com/leaderboards/77212f22-20f5-4e0c-8db6-78844318a9bc",
+      "first_rank": 1,
+      "last_rank": 50,
+      "captured_utc": "2026-11-26T23:19:31.622Z",
+      "verified_rows": [
+        {
+          "rank": 31,
+          "name": "expert",
+          "href": "/leaderboards/77212f22-20f5-4e0c-8db6-78844318a9bc/entries/54bf6708-1d04-467d-ae5e-5752a2050071",
+          "text": [
+            "31",
+            "expert\nby alexander\nRust",
+            "35.0",
+            "49.7",
+            "39802.0",
+            "1464"
+          ]
+        },
+        {
+          "rank": 41,
+          "name": "journeyman",
+          "href": "/leaderboards/77212f22-20f5-4e0c-8db6-78844318a9bc/entries/104802d9-d2c1-4eeb-bc4c-e327f6d22128",
+          "text": [
+            "41",
+            "journeyman\nby alexander\nRust",
+            "31.1",
+            "47.5",
+            "36063.0",
+            "1611"
+          ]
+        },
+        {
+          "rank": 43,
+          "name": "apprentice",
+          "href": "/leaderboards/77212f22-20f5-4e0c-8db6-78844318a9bc/entries/1c79a70a-12c9-4701-831d-e595cebbb579",
+          "text": [
+            "43",
+            "apprentice\nby alexander\nRust",
+            "30.4",
+            "44.1",
+            "32047.0",
+            "1597"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "duels-2.png",
+      "url": "https://arena.battlesnake.com/leaderboards/77212f22-20f5-4e0c-8db6-78844318a9bc?sort=rating&page=1",
+      "first_rank": 51,
+      "last_rank": 100,
+      "captured_utc": "2026-11-26T23:19:34.521Z",
+      "verified_rows": [
+        {
+          "rank": 68,
+          "name": "novice",
+          "href": "/leaderboards/77212f22-20f5-4e0c-8db6-78844318a9bc/entries/de9648f9-2b1b-4a60-8848-fd61b904372f",
+          "text": [
+            "68",
+            "novice\nby alexander\nRust",
+            "22.3",
+            "46.9",
+            "34762.0",
+            "2021"
+          ]
+        },
+        {
+          "rank": 69,
+          "name": "VibeSnake",
+          "href": "/leaderboards/77212f22-20f5-4e0c-8db6-78844318a9bc/entries/32ce706b-e9a4-4f09-9160-e29b990945b0",
+          "text": [
+            "69",
+            "VibeSnake\nby bye-tranquility",
+            "22.2",
+            "84.1",
+            "427.0",
+            "44"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "rankings-1.png",
+      "url": "https://arena.battlesnake.com/rankings",
+      "first_rank": 1,
+      "last_rank": 50,
+      "captured_utc": "2026-11-26T23:19:35.344Z",
+      "verified_rows": [
+        {
+          "rank": 30,
+          "name": "Rigur-Calypso",
+          "href": "/users/Rigur-Calypso/63b48d63-8c64-4894-b9d4-1add97390288",
+          "text": [
+            "30",
+            "R\nRigur-Calypso",
+            "123.3\navg 30.8",
+            "4 boards"
+          ]
+        },
+        {
+          "rank": 36,
+          "name": "bye-tranquility",
+          "href": "/users/bye-tranquility/a6b9eedb-f5e7-47ee-bc34-cec86ec2c56f",
+          "text": [
+            "36",
+            "B\nbye-tranquility",
+            "111.0\navg 27.8",
+            "4 boards"
+          ]
+        }
+      ]
+    }
+  ],
+  "visible_course_standing": {
+    "snake_rank": 69,
+    "above": [],
+    "player_rank": 36,
+    "points": 0
+  }
+}
