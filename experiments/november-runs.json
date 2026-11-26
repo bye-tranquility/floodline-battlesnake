@@ -125,6 +125,54 @@
       "wins": 0
     }
   },
+  "duel-standard-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Measure the shared duel policies in 100 four-player Standard games before publishing",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "88c9363702eeb006465a4670dfbe931bd22aec227f3e9e08d29aefbbc1a30cce",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.99,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 18001,
+      "losses": 45,
+      "max_ms": 75.193,
+      "mode": "standard",
+      "opponent": "search",
+      "reference_average_place": 2.075,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 55
+    }
+  },
+  "duel-standard-finals": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Regress Standard four-player openings and the shared two-player endgame",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "88c9363702eeb006465a4670dfbe931bd22aec227f3e9e08d29aefbbc1a30cce",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 2.125,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 17001,
+      "losses": 16,
+      "max_ms": 49.538,
+      "mode": "standard",
+      "opponent": "search",
+      "reference_average_place": 1.5,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 8
+    }
+  },
   "duel-survive-control": {
     "engine": "Battlesnake CLI v1.2.3",
     "hypothesis": "Holdout for keeping a live chance instead of trading heads in equal positions",
@@ -203,6 +251,30 @@
       "wins": 0
     }
   },
+  "royale-reserve-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Retain routes to contested food when the alternative is starvation",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "331b661f58e2bed9dcc64016f0cbd7bd5e96d63a4d09e55c6adfc346dc5844d7",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 2.0833333333333335,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 13001,
+      "losses": 13,
+      "max_ms": 5.631,
+      "mode": "royale",
+      "opponent": "search",
+      "reference_average_place": 2.0833333333333335,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 11
+    }
+  },
   "royale-routes-screen": {
     "engine": "Battlesnake CLI v1.2.3",
     "hypothesis": "Separate arrival turns from survivable health cost and price the return from hazard food",
@@ -225,6 +297,30 @@
       "rotations": 4,
       "seeds": 6,
       "wins": 5
+    }
+  },
+  "standard-seats-baseline": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Measure control-seat asymmetry on identical binaries and openings",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "sha256": {
+      "candidate": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 2.125,
+      "candidate": "search",
+      "draws": 4,
+      "first_seed": 17001,
+      "losses": 14,
+      "max_ms": 44.618,
+      "mode": "standard",
+      "opponent": "search",
+      "reference_average_place": 1.5,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 6
     }
   }
 }

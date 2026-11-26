@@ -6,6 +6,7 @@ const victory = 100_000
 
 type duelSearch struct {
 	*analysis
+	escape       pocketEscape
 	deadline     time.Time
 	limit, nodes int
 }
@@ -57,6 +58,9 @@ func (s *duelSearch) evaluate(p position) int {
 	if p.constrictor {
 		return score + land*2 + 3*(our.area-their.area)
 	}
+	if !p.royale {
+		score += s.escape.score(p, me, them, our, s.other) - s.escape.score(p, them, me, their, s.own)
+	}
 	score += min(3, max(-3, gap))*95 + gap*8
 	score += nutrition(our, me.health, gap) - nutrition(their, them.health, -gap)
 	score += max(0, 40-them.health)*2 - max(0, 40-me.health)*2
@@ -83,6 +87,11 @@ func (s *duelSearch) best(p position, depth, ply, alpha, beta int, preferred dir
 			score := 0
 			switch {
 			case !us && !foe:
+				if !p.constrictor && !p.royale {
+					// When there is a playable escape, keep the opportunity to
+					// win. A mutual elimination is still better than certain loss.
+					score = -1800
+				}
 			case !us:
 				score = -victory + ply + 1
 			case !foe:

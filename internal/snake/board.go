@@ -47,6 +47,7 @@ type field struct {
 	next          [][4]int
 	damage        []int
 	constrictor   bool
+	royale        bool
 }
 
 type serpent struct {
@@ -68,7 +69,9 @@ func (r *Request) position() (position, error) {
 	}
 	n := b.Width * b.Height
 	f := &field{width: b.Width, height: b.Height, next: make([][4]int, n), damage: make([]int, n)}
-	f.constrictor = strings.Contains(strings.ToLower(r.Game.Map+" "+r.Game.Ruleset.Name), "constrictor")
+	mode := strings.ToLower(r.Game.Map + " " + r.Game.Ruleset.Name)
+	f.constrictor = strings.Contains(mode, "constrictor")
+	f.royale = strings.Contains(mode, "royale")
 	for c := range f.next {
 		x, y := c%b.Width, c/b.Width
 		adj := [4]int{-1, -1, -1, -1}
