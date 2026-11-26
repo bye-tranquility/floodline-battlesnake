@@ -112,7 +112,7 @@ func nutrition(r region, hp, lengthGap int) int {
 
 func (p position) steer(a *analysis, style string) direction {
 	ahead := p.snakes[0]
-	a.ownDistancesOfOpponents(p)
+	a.measureOpponents(p)
 	longest := 0
 	for _, s := range p.snakes[1:] {
 		longest = max(longest, len(s.body))
@@ -152,6 +152,10 @@ func (p position) steer(a *analysis, style string) direction {
 		}
 		if p.constrictor {
 			score += r.area + claimed
+			if style == "search" && len(p.snakes) > 2 {
+				remaining := 240
+				score += 110 * a.trail(p, c, 1, &remaining)
+			}
 		}
 		if p.damage[c] > 0 {
 			score -= p.damage[c] + min(r.safe, 30)*3
@@ -179,7 +183,29 @@ func (p position) steer(a *analysis, style string) direction {
 	return chosen
 }
 
-func (a *analysis) ownDistancesOfOpponents(p position) {
+// In Constrictor each square can be visited only once. Count a path we can
+// claim before a rival, not every branch of a chamber we can enter only once.
+func (a *analysis) trail(p position, cell, arrival int, remaining *int) int {
+	if arrival >= 14 || *remaining <= 0 {
+		return 0
+	}
+	*remaining = *remaining - 1
+	a.blocked[cell] = true
+	defer func() { a.blocked[cell] = false }()
+	best := 0
+	for _, to := range p.next[cell] {
+		if to < 0 || a.blocked[to] || a.nearest[to] <= arrival+1 {
+			continue
+		}
+		best = max(best, 1+a.trail(p, to, arrival+1, remaining))
+		if best >= 14-arrival {
+			break
+		}
+	}
+	return best
+}
+
+func (a *analysis) measureOpponents(p position) {
 	p.occupied(a.blocked)
 	for i := range a.nearest {
 		a.nearest[i] = infinity

@@ -119,3 +119,28 @@ func TestSearchDeadlineAndLastHealth(t *testing.T) {
 		t.Fatalf("expired request %+v", got)
 	}
 }
+
+func TestConstrictorTrailHasAnExit(t *testing.T) {
+	r := setup("constrictor", [][]int{{8, 7, 7}, {47, 46, 46}}, []int{100, 100}, nil, nil)
+	p, err := r.position()
+	if err != nil {
+		t.Fatal(err)
+	}
+	a := newAnalysis(len(p.food))
+	for i := range a.blocked {
+		a.blocked[i] = true
+		a.nearest[i] = infinity
+	}
+	for _, i := range []int{8, 9, 10, 11, 12} {
+		a.blocked[i] = false
+	}
+	a.nearest[11] = 4 // the opponent can contest our fourth square
+	before := slices.Clone(a.blocked)
+	remaining := 240
+	if n := a.trail(p, 8, 1, &remaining); n != 2 {
+		t.Fatalf("safe continuation has %d moves, want 2", n)
+	}
+	if !slices.Equal(before, a.blocked) {
+		t.Fatal("trail search changed the board")
+	}
+}
