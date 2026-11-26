@@ -1,0 +1,74 @@
+{
+  "as_of_utc": "2026-11-26T23:29:27+00:00",
+  "profile": "https://arena.battlesnake.com/battlesnakes/eefbc819-2b24-4eec-b727-cf7441a9fee7/profile",
+  "boards": {
+    "Duels": {
+      "status": "ranked",
+      "rank": 66,
+      "score": 22.62,
+      "games": 45
+    },
+    "Standard": {
+      "status": "ranked",
+      "rank": 66,
+      "score": 43.59,
+      "games": 45
+    },
+    "Royale": {
+      "status": "ranked",
+      "rank": 40,
+      "score": 27.31,
+      "games": 44
+    },
+    "Constrictor": {
+      "status": "ranked",
+      "rank": 47,
+      "score": 18.16,
+      "games": 46
+    }
+  },
+  "duel_references": {
+    "Novice": {
+      "status": "ranked",
+      "rank": 69,
+      "score": 22.38,
+      "games": 2022
+    },
+    "Apprentice": {
+      "status": "ranked",
+      "rank": 43,
+      "score": 30.39,
+      "games": 1597
+    },
+    "Journeyman": {
+      "status": "ranked",
+      "rank": 41,
+      "score": 31.08,
+      "games": 1611
+    },
+    "Expert": {
+      "status": "ranked",
+      "rank": 31,
+      "score": 35.0,
+      "games": 1464
+    }
+  },
+  "above": [
+    "Novice"
+  ],
+  "global_player": {
+    "rank": 35,
+    "score": 111.7
+  },
+  "top_30_cutoff": 123.5,
+  "gaps": {
+    "next_duel_reference": {
+      "name": "Apprentice",
+      "score_gap": 7.77,
+      "places_to_pass": 24
+    },
+    "global_score_gap": 11.8,
+    "global_places_to_top_30": 5
+  },
+  "provisional_arena_points": 35
+}
