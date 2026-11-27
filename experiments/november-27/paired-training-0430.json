@@ -1,0 +1,151 @@
+{
+  "duel_leaf_pairs": {
+    "boards_with_choices": 334,
+    "continuations": 1612,
+    "censored": 1,
+    "training_comparisons": 977,
+    "holdout_comparisons": 242,
+    "unequal_outcomes_in_holdout": 78,
+    "baseline_scale": 0.00026402033191493354,
+    "baseline": {
+      "log_loss": 0.6903793645596649,
+      "ordering_accuracy": 0.5037313432835818
+    },
+    "fitted": {
+      "log_loss": 0.6918013120556091,
+      "ordering_accuracy": 0.5671641791044775
+    },
+    "old_units": [
+      74,
+      373,
+      7439,
+      -23487,
+      -2377,
+      9656,
+      3359,
+      9673,
+      -3169,
+      159230,
+      -22578,
+      0,
+      -1344
+    ]
+  },
+  "royale_position_pairs": {
+    "seeds_with_choices": 435,
+    "boards_with_choices": 801,
+    "continuations": 4180,
+    "censored": 0,
+    "training_comparisons": 2798,
+    "holdout_comparisons": 756,
+    "unequal_outcomes_in_holdout": 496,
+    "baseline_scale": 0.0006613169249372734,
+    "baseline": {
+      "log_loss": 0.691159430481069,
+      "ordering_accuracy": 0.5720588235294118
+    },
+    "fitted": {
+      "log_loss": 0.6886790672063796,
+      "ordering_accuracy": 0.5970588235294116
+    },
+    "old_units": [
+      92,
+      -1118,
+      30,
+      -1886,
+      -3936,
+      5437,
+      2569,
+      1093,
+      -1089,
+      1094,
+      -6402,
+      1493,
+      -865,
+      48756,
+      -1340
+    ]
+  },
+  "constrictor_corridors": {
+    "examined_cases": 1400,
+    "decisions_with_alternatives": 777,
+    "simulated_games": 3610,
+    "training_comparisons": 1045,
+    "held_comparisons": 234,
+    "quality_baseline": {
+      "log_loss": 0.581957368492742,
+      "direction_accuracy": 0.7530364372469635
+    },
+    "model_quality": {
+      "log_loss": 0.5787555757048874,
+      "direction_accuracy": 0.7773279352226719
+    },
+    "base_scale": 0.0008612729766625732,
+    "equivalent_weights": [
+      1.0469338422719292,
+      9.502236994953607,
+      -45.26779245073225,
+      -110.35008847564703,
+      -25.138482002202334,
+      -10.365745381428162,
+      13.631979014113567,
+      251.1666297808997,
+      6.411081042777804,
+      0.9134699282732607,
+      -2.0681740520026635
+    ]
+  },
+  "royale_opponents": {
+    "games": 34,
+    "train_games": 21,
+    "held_games": 13,
+    "train_actions": 6790,
+    "held_actions": 4193,
+    "baseline": {
+      "log_loss": 0.9295617106899875,
+      "top1": 0.5173646600526352
+    },
+    "model": {
+      "log_loss": 0.8185205556929618,
+      "top1": 0.5865147795736066
+    },
+    "coefficients": [
+      0.495714244517482,
+      0.043416533254585124,
+      0.07757203027000291,
+      0.26075702683264906,
+      -0.004537167898105472,
+      0.07004406021417327,
+      -0.0025909127537351202,
+      1.6548605633958429,
+      0.0770189813099715,
+      0.09557687833439445,
+      0.001040359061087698,
+      0.027103268669832873,
+      -0.36067928127953913,
+      -5.004433158945728,
+      0.5193275914840829,
+      0.030544180236086474,
+      -0.00395551601274049,
+      0.038544751077223896
+    ]
+  },
+  "one_core_45ms_forecast": {
+    "1": {
+      "requests": 500,
+      "concurrency": 1,
+      "p50_ms": 1.239,
+      "p99_ms": 16.508,
+      "max_ms": 45.904,
+      "over_500_ms": 0
+    },
+    "4": {
+      "requests": 500,
+      "concurrency": 4,
+      "p50_ms": 5.65,
+      "p99_ms": 47.626,
+      "max_ms": 63.719,
+      "over_500_ms": 0
+    }
+  }
+}
