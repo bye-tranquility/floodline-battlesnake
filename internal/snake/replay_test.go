@@ -156,6 +156,25 @@ func TestRoyaleTailOpensPitonEscape(t *testing.T) {
 	}
 }
 
+func TestConstrictorForkfangRematch(t *testing.T) {
+	records := readReplay(t, "constrictor-forkfang-rematch")
+	if len(records) != 12 {
+		t.Fatalf("received %d recorded positions", len(records))
+	}
+	for _, want := range []struct {
+		turn int
+		move direction
+	}{{5, right}, {11, left}} {
+		req := records[want.turn-2]
+		if req.Game.ID != "3773cfda-13ee-4a3f-b95c-2fccc723e7b0" || req.Turn != want.turn {
+			t.Fatalf("missing Forkfang turn %d", want.turn)
+		}
+		if move := replayMove(t, &req); move != want.move {
+			t.Errorf("turn %d: got %s, want %s", want.turn, names[move], names[want.move])
+		}
+	}
+}
+
 func TestSeparatedChamberAgainstHoveringHobbs(t *testing.T) {
 	records := readReplay(t, "constrictor-hobbs")
 	if len(records) != 1 || records[0].Game.ID != "5bc99e79-75c5-4162-9d48-a83373b739ef" || records[0].Turn != 24 {

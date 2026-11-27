@@ -204,6 +204,9 @@ func (p position) steer(a *analysis, style string) direction {
 		if p.damage[c] > 0 {
 			score -= p.damage[c] + min(r.safe, 30)*3
 		}
+		if p.constrictor && style == "search" && len(p.snakes) >= 3 && len(p.snakes) <= 4 && p.width == 11 && p.height == 11 {
+			score = a.placementScore(p, c, r, score)
+		}
 		for _, s := range p.snakes[1:] {
 			if len(s.body) == 0 || p.nextHealth(s, c) <= 0 {
 				continue
