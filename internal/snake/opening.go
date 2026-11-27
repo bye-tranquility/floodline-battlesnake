@@ -37,40 +37,42 @@ func (a *analysis) openingFood(p position) (direction, bool) {
 	return choice, best != -infinity
 }
 
-// On the four cardinal starts, follow the edge for a turn before choosing
-// the first inward corridor. Each assigned move was selected on training
-// lineups that were disjoint from the ones used to validate the opening.
-func (p position) edgeOpening() (direction, bool) {
+// These two layouts are the symmetric four-player openings on the 11x11
+// arena board. The first direction in each seat was selected using the
+// finishing places of independently simulated games.
+type trailStart struct {
+	pattern, seat uint8
+	move          direction
+}
+
+const (
+	edgePattern = iota
+	cornerPattern
+)
+
+var trailStarts = map[int]trailStart{
+	5*11 + 1: {edgePattern, 1, up}, 5*11 + 9: {edgePattern, 2, up},
+	1*11 + 5: {edgePattern, 4, left}, 9*11 + 5: {edgePattern, 8, right},
+	1*11 + 1: {cornerPattern, 1, right}, 1*11 + 9: {cornerPattern, 2, left},
+	9*11 + 1: {cornerPattern, 4, right}, 9*11 + 9: {cornerPattern, 8, left},
+}
+
+func (p position) constrictorOpening() (direction, bool) {
 	if p.width != 11 || p.height != 11 || len(p.snakes) != 4 {
 		return up, false
 	}
-	var seen [4]bool
-	var first direction
-	for i, s := range p.snakes {
-		head := s.body[0]
-		if len(s.body) != 3 || s.body[1] != head || s.body[2] != head {
-			return up, false
-		}
-		var side, move direction
-		switch head {
-		case 5*11 + 1:
-			side, move = left, up
-		case 5*11 + 9:
-			side, move = right, up
-		case 1*11 + 5:
-			side, move = down, left
-		case 9*11 + 5:
-			side, move = up, right
-		default:
-			return up, false
-		}
-		if seen[side] {
-			return up, false
-		}
-		seen[side] = true
-		if i == 0 {
-			first = move
-		}
+	ours, ok := trailStarts[p.snakes[0].body[0]]
+	if !ok {
+		return up, false
 	}
-	return first, true
+	var occupied uint8
+	for _, who := range p.snakes {
+		head := who.body[0]
+		start, found := trailStarts[head]
+		if !found || start.pattern != ours.pattern || len(who.body) != 3 || who.body[1] != head || who.body[2] != head {
+			return up, false
+		}
+		occupied |= start.seat
+	}
+	return ours.move, occupied == 15
 }

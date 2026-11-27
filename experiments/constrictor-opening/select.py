@@ -1,4 +1,4 @@
-"""Select a first move for each Constrictor edge start, then evaluate held-out fields."""
+"""Select first moves for the two Constrictor formations, then evaluate held-out fields."""
 
 from collections import defaultdict
 import gzip
@@ -18,21 +18,22 @@ def main():
     for row in rows:
         fields[row["Fold"]].add(tuple(sorted(row["Rivals"])))
         x, y = row["Spot"]
-        if x == 5 or y == 5:
-            starts[(x, y)].append(row)
+        pattern = "edge" if x == 5 or y == 5 else "corner"
+        starts[(pattern, x, y)].append(row)
     assert fields["train"].isdisjoint(fields["held"])
 
-    tested, prior = [], []
-    for spot, cases in sorted(starts.items()):
+    tested, prior = defaultdict(list), defaultdict(list)
+    for (pattern, x, y), cases in sorted(starts.items()):
         train = [row["Places"] for row in cases if row["Fold"] == "train"]
         ranks = [mean(direction) for direction in zip(*train)]
         chosen = min(range(4), key=ranks.__getitem__)
         held = [row for row in cases if row["Fold"] == "held"]
-        tested.extend(row["Places"][chosen] for row in held)
-        prior.extend(row["Places"][DIRECTIONS.index(row["Prior"])] for row in held)
-        print(spot, DIRECTIONS[chosen], "training mean place", round(ranks[chosen], 3))
-    print("Held-out edge starts", len(tested), "proposed", round(mean(tested), 3),
-          "previous", round(mean(prior), 3))
+        tested[pattern].extend(row["Places"][chosen] for row in held)
+        prior[pattern].extend(row["Places"][DIRECTIONS.index(row["Prior"])] for row in held)
+        print((x, y), DIRECTIONS[chosen], "training mean place", round(ranks[chosen], 3))
+    for pattern in sorted(tested):
+        print("Held-out", pattern, "starts", len(tested[pattern]), "proposed",
+              round(mean(tested[pattern]), 3), "previous", round(mean(prior[pattern]), 3))
 
 
 if __name__ == "__main__":

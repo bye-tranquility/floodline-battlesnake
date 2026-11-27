@@ -32,7 +32,7 @@ func Decide(r *Request, started time.Time, opts Options) (Decision, error) {
 		return result, nil
 	}
 	if r.Turn == 0 && p.constrictor && len(r.Board.Hazards) == 0 && len(r.Board.Food) == 0 {
-		if move, ok := p.edgeOpening(); ok {
+		if move, ok := p.constrictorOpening(); ok {
 			return Decision{Move: names[move]}, nil
 		}
 	}
