@@ -74,6 +74,21 @@ func TestInterceptDenoMBeforeEnteringEdgeCorridor(t *testing.T) {
 	t.Fatal("missing DenoM turn 238")
 }
 
+func TestWhiravRematchAtNorthWall(t *testing.T) {
+	for _, req := range readReplay(t, "duels-whirav-rematch") {
+		if req.Turn == 257 {
+			if req.You.Body[0] != (Point{4, 9}) {
+				t.Fatal("unexpected Whirav position")
+			}
+			if got := replayMove(t, &req); got != left {
+				t.Fatalf("turn 257 chose %s, left wins on turn 275 against the recorded replies", names[got])
+			}
+			return
+		}
+	}
+	t.Fatal("missing Whirav rematch turn 257")
+}
+
 func TestElizabeth1Corridor(t *testing.T) {
 	checked := 0
 	for _, req := range readReplay(t, "duels-elizabeth1") {

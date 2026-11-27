@@ -1,0 +1,38 @@
+{
+  "mixed": {
+    "1": {
+      "requests": 500,
+      "concurrency": 1,
+      "p50_ms": 2.58,
+      "p99_ms": 40.072,
+      "max_ms": 112.868,
+      "over_500_ms": 0
+    },
+    "4": {
+      "requests": 500,
+      "concurrency": 4,
+      "p50_ms": 13.15,
+      "p99_ms": 54.314,
+      "max_ms": 72.828,
+      "over_500_ms": 0
+    }
+  },
+  "endgames": {
+    "1": {
+      "requests": 500,
+      "concurrency": 1,
+      "p50_ms": 21.201,
+      "p99_ms": 35.897,
+      "max_ms": 78.675,
+      "over_500_ms": 0
+    },
+    "4": {
+      "requests": 500,
+      "concurrency": 4,
+      "p50_ms": 21.922,
+      "p99_ms": 53.857,
+      "max_ms": 58.297,
+      "over_500_ms": 0
+    }
+  }
+}

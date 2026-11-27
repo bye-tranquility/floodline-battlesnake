@@ -113,6 +113,10 @@ func (s *duelSearch) evaluate(p position) int {
 	score += nutrition(our, me.health, gap) - nutrition(their, them.health, -gap)
 	score += max(0, 40-them.health)*2 - max(0, 40-me.health)*2
 	score += min(30, their.safe)*3 - min(30, our.safe)*3
+	// These endgames have enough training examples for both length ranges.
+	if p.plainDuelGrid && len(me.body)+len(them.body) >= 24 && abs(gap) <= 13 {
+		score += endgameAdjustment(p, score, land, our, their)
+	}
 	return score
 }
 
