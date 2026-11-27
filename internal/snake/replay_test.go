@@ -134,6 +134,31 @@ func TestApproachFoodWhenFiveSegmentsBehind(t *testing.T) {
 	t.Fatal("missing Olej1 turn 54")
 }
 
+func TestConstrictorKopertekhovFork(t *testing.T) {
+	for _, req := range readReplay(t, "constrictor-kopertekhov") {
+		if req.Turn != 15 {
+			continue
+		}
+		p, err := req.position()
+		if err != nil || !p.forecastFork() || req.You.Body[0] != (Point{0, 3}) {
+			t.Fatalf("unexpected Constrictor fork, error %v", err)
+		}
+		a := newAnalysis(len(p.food))
+		prior := p.steer(a, "search")
+		if prior != up {
+			t.Fatalf("ordinary placement chose %s", names[prior])
+		}
+		if got := p.refinePlacement(a, prior, time.Now()); got != prior {
+			t.Fatal("expired forecast replaced the completed decision")
+		}
+		if got := p.refinePlacement(a, prior, time.Now().Add(time.Second)); got != down {
+			t.Fatalf("chose %s, down survives the recorded opponent responses", names[got])
+		}
+		return
+	}
+	t.Fatal("missing Constrictor turn 15")
+}
+
 func TestWinningDuelAndStandardEndings(t *testing.T) {
 	records := readReplay(t, "wins")
 	if len(records) != 24 {

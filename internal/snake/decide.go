@@ -20,7 +20,7 @@ func Decide(r *Request, started time.Time, opts Options) (Decision, error) {
 	a := newAnalysis(len(p.food))
 	fallback := p.steer(a, opts.Style)
 	result := Decision{Move: names[fallback]}
-	if opts.Style != "search" || len(p.snakes) != 2 {
+	if opts.Style != "search" {
 		return result, nil
 	}
 	timeout := r.Game.Timeout
@@ -29,6 +29,13 @@ func Decide(r *Request, started time.Time, opts Options) (Decision, error) {
 	}
 	budget := min(opts.Budget, 120*time.Millisecond, time.Duration(timeout-150)*time.Millisecond)
 	if budget <= 0 || !time.Now().Before(started.Add(budget)) {
+		return result, nil
+	}
+	if len(p.snakes) != 2 {
+		if p.forecastFork() {
+			end := started.Add(min(budget, 45*time.Millisecond))
+			result.Move = names[p.refinePlacement(a, fallback, end)]
+		}
 		return result, nil
 	}
 	if !p.constrictor && !p.royale && r.Turn < 8 && p.snakes[0].health >= 90 &&
@@ -51,20 +58,6 @@ func Decide(r *Request, started time.Time, opts Options) (Decision, error) {
 			search.limit *= 4
 		}
 	}
-	preferred := fallback
-	for depth := 1; depth <= 16; depth++ {
-		move, score, complete := search.best(p, depth, 0, -infinity, infinity, preferred, 1)
-		if !complete {
-			break
-		}
-		preferred = move
-		result.Move, result.Depth = names[move], depth
-		if abs(score) >= victory-depth {
-			result.Nodes = search.nodes
-			return result, nil
-		}
-	}
-	result.Move = names[search.confirmTactics(p, result.Depth, preferred)]
-	result.Nodes = search.nodes
-	return result, nil
+	move, depth := search.deepen(p, fallback)
+	return Decision{Move: names[move], Depth: depth, Nodes: search.nodes}, nil
 }

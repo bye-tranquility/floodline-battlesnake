@@ -1693,6 +1693,160 @@
       "wins": 8
     }
   },
+  "constrictor-rank-ensemble-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Three complete opponent-style forecasts at a two-exit fork, scored by held-out finish-place ordering, versus the current release.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "00de47f44087af9d778e11010fb7462a5721a1380ea457aece6f0f43f6f7c660",
+      "reference": "974faeb141ab2c10f4ee1314c5ed147fb294da0c859954d04829257fa7661b6b"
+    },
+    "summary": {
+      "average_place": 1.715,
+      "candidate": "search",
+      "draws": 30,
+      "first_seed": 207001,
+      "losses": 29,
+      "max_ms": 45.196,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.305,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 41
+    }
+  },
+  "constrictor-rank-ensemble-original": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Compare the learned three-forecast place estimate with assignment baseline v0.4.1 in five rotating fields.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "00de47f44087af9d778e11010fb7462a5721a1380ea457aece6f0f43f6f7c660",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.74,
+      "candidate": "search",
+      "draws": 15,
+      "first_seed": 208001,
+      "losses": 43,
+      "max_ms": 41.04,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.325,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 42
+    }
+  },
+  "constrictor-rank-ensemble-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Use final-rank forecasts from strong, pressure and trail policies, fitted on 526 binary forks. Change the incumbent direction only at estimated preference at least 70 percent.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ],
+        [
+          "food",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "00de47f44087af9d778e11010fb7462a5721a1380ea457aece6f0f43f6f7c660",
+      "reference": "974faeb141ab2c10f4ee1314c5ed147fb294da0c859954d04829257fa7661b6b"
+    },
+    "summary": {
+      "average_place": 1.9583333333333333,
+      "candidate": "search",
+      "draws": 3,
+      "first_seed": 206001,
+      "losses": 12,
+      "max_ms": 23.204,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.375,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 9
+    }
+  },
   "constrictor-replies-screen": {
     "engine": "Battlesnake CLI v1.2.3",
     "hypothesis": "Simulate nearest-rival replies and compare reachable trails after simultaneous moves",
@@ -4908,6 +5062,56 @@
       "rotations": 2,
       "seeds": 12,
       "wins": 12
+    }
+  },
+  "forecast-release-v016-integration": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Independently confirm the actual release binary against v0.16.0 on new starts after the original two positive controls; preserve completed duel tactics.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "8178be78c3ea28df001dfee132c45ea7080ab387eb65faca18411c0c07cd53e8",
+      "reference": "6574d383e7ba14d850cf36aef3a7c6669a824be020008eaa46d8d76aa197c246"
+    },
+    "summary": {
+      "average_place": 1.76,
+      "candidate": "search",
+      "draws": 32,
+      "first_seed": 212001,
+      "losses": 31,
+      "max_ms": 25.085,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.305,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 37
     }
   },
   "forecast-royale-control": {

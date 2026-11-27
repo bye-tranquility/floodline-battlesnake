@@ -18,6 +18,21 @@ type lineOrder struct {
 	replies [4]direction
 }
 
+func (s *duelSearch) deepen(p position, preferred direction) (direction, int) {
+	completed := 0
+	for depth := 1; depth <= 16; depth++ {
+		move, score, ok := s.best(p, depth, 0, -infinity, infinity, preferred, 1)
+		if !ok {
+			break
+		}
+		preferred, completed = move, depth
+		if abs(score) >= victory-depth {
+			return preferred, completed
+		}
+	}
+	return s.confirmTactics(p, completed, preferred), completed
+}
+
 type moveList struct {
 	moves [4]direction
 	count int

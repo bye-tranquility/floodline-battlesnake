@@ -3,12 +3,16 @@ package snake
 const infinity = 1_000_000
 
 type analysis struct {
+	placementScores            [4]int
 	blocked, queued            []bool
 	queue, own, other, nearest []int
 }
 
 func newAnalysis(n int) *analysis {
-	return &analysis{make([]bool, n), make([]bool, n), make([]int, n), make([]int, n), make([]int, n), make([]int, n)}
+	return &analysis{
+		blocked: make([]bool, n), queued: make([]bool, n), queue: make([]int, n),
+		own: make([]int, n), other: make([]int, n), nearest: make([]int, n),
+	}
 }
 
 type region struct {
@@ -178,11 +182,13 @@ func (p position) steer(a *analysis, style string) direction {
 		}
 		if p.constrictor {
 			score += r.area + claimed
+			if len(p.snakes) > 2 && (style == "search" || style == "trail") {
+				remaining := 240
+				score += 110 * a.trail(p, c, 1, 14, &remaining)
+			}
 		}
 		if style == "search" && len(p.snakes) > 2 {
 			if p.constrictor {
-				remaining := 240
-				score += 110 * a.trail(p, c, 1, 14, &remaining)
 				score += choke.score(p, a, c, r.area)
 			} else if routes != nil {
 				const extra = 8
@@ -206,6 +212,7 @@ func (p position) steer(a *analysis, style string) direction {
 		}
 		if p.constrictor && style == "search" && len(p.snakes) >= 3 && len(p.snakes) <= 4 && p.width == 11 && p.height == 11 {
 			score = a.placementScore(p, c, r, score)
+			a.placementScores[move] = score
 		}
 		for _, s := range p.snakes[1:] {
 			if len(s.body) == 0 || p.nextHealth(s, c) <= 0 {

@@ -1,5 +1,6 @@
 """Reproduce the Constrictor placement coefficients with Python 3 and NumPy."""
 
+import argparse
 import gzip
 import hashlib
 import itertools
@@ -47,7 +48,9 @@ def fit(features, targets, weights):
 
 
 def main():
-    features, targets, weights, holdout = comparisons(Path(__file__).with_name("choices.jsonl.gz"))
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("choices", type=Path, nargs="?", default=Path(__file__).with_name("choices.jsonl.gz"))
+    features, targets, weights, holdout = comparisons(parser.parse_args().choices)
     train = ~holdout
     baseline = fit(features[train, :1], targets[train], weights[train])
     model = fit(features[train], targets[train], weights[train])
@@ -57,6 +60,7 @@ def main():
                           ("model", features[holdout] @ model)):
         loss = np.logaddexp(0, logits) - targets[holdout] * logits
         print(label, "held-out log loss", round(np.average(loss, weights=weights[holdout]), 6))
+    print("Coefficients in millionths of log odds", np.rint(1_000_000 * model).astype(int).tolist())
     print("Coefficients in hundredths of the baseline score",
           np.rint(100 * model / baseline[0]).astype(int).tolist())
 

@@ -1,0 +1,38 @@
+{
+  "four_mode_corpus": {
+    "1": {
+      "requests": 500,
+      "concurrency": 1,
+      "p50_ms": 1.555,
+      "p99_ms": 19.38,
+      "max_ms": 25.495,
+      "over_500_ms": 0
+    },
+    "4": {
+      "requests": 500,
+      "concurrency": 4,
+      "p50_ms": 8.679,
+      "p99_ms": 58.426,
+      "max_ms": 62.494,
+      "over_500_ms": 0
+    }
+  },
+  "two_exit_constrictor_corpus": {
+    "1": {
+      "requests": 500,
+      "concurrency": 1,
+      "p50_ms": 6.342,
+      "p99_ms": 30.154,
+      "max_ms": 34.036,
+      "over_500_ms": 0
+    },
+    "4": {
+      "requests": 500,
+      "concurrency": 4,
+      "p50_ms": 21.716,
+      "p99_ms": 122.323,
+      "max_ms": 138.961,
+      "over_500_ms": 0
+    }
+  }
+}
