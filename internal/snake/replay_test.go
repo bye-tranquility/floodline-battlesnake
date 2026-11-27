@@ -74,6 +74,25 @@ func TestInterceptDenoMBeforeEnteringEdgeCorridor(t *testing.T) {
 	t.Fatal("missing DenoM turn 238")
 }
 
+func TestElizabeth1Corridor(t *testing.T) {
+	checked := 0
+	for _, req := range readReplay(t, "duels-elizabeth1") {
+		if req.Turn != 307 && req.Turn != 311 {
+			continue
+		}
+		if len(req.You.Body) != 39 {
+			t.Fatal("expected the long snake approaching its own corridor")
+		}
+		if got := replayMove(t, &req); got != left {
+			t.Fatalf("turn %d: chose %s, left wins against the recorded replies", req.Turn, names[got])
+		}
+		checked++
+	}
+	if checked != 2 {
+		t.Fatalf("found %d of the two turning points", checked)
+	}
+}
+
 func TestMoveOrderingPreservesCompletedDuelScores(t *testing.T) {
 	for _, req := range readReplay(t, "duels-denom") {
 		p, err := req.position()

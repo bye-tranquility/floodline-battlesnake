@@ -6,10 +6,11 @@ const victory = 100_000
 
 type duelSearch struct {
 	*analysis
-	escape       pocketEscape
-	history      map[uint64]lineOrder
-	deadline     time.Time
-	limit, nodes int
+	escape        pocketEscape
+	history       map[uint64]lineOrder
+	deadline      time.Time
+	limit, nodes  int
+	tacticalDepth int
 }
 
 type lineOrder struct {
@@ -141,14 +142,14 @@ func (s *duelSearch) best(p position, depth, ply, alpha, beta int, preferred dir
 				score = -victory + ply + 1
 			case !foe:
 				score = victory - ply - 1
-			case depth == 1:
+			case depth == 1 && (ply+1 >= s.tacticalDepth || !s.forcedOrContested(next)):
 				score = s.evaluate(next)
 			default:
 				var complete bool
 				// Four bits identify one joint turn. The depth limit keeps the full
 				// ordered line in one word, including the leading root marker.
 				nextPath := path<<4 | uint64(m)<<2 | uint64(reply)
-				_, score, complete = s.best(next, depth-1, ply+1, alpha, min(beta, worst), -1, nextPath)
+				_, score, complete = s.best(next, max(1, depth-1), ply+1, alpha, min(beta, worst), -1, nextPath)
 				if !complete {
 					return bestMove, 0, false
 				}

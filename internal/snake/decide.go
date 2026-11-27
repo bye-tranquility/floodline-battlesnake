@@ -60,9 +60,11 @@ func Decide(r *Request, started time.Time, opts Options) (Decision, error) {
 		preferred = move
 		result.Move, result.Depth = names[move], depth
 		if abs(score) >= victory-depth {
-			break
+			result.Nodes = search.nodes
+			return result, nil
 		}
 	}
+	result.Move = names[search.confirmTactics(p, result.Depth, preferred)]
 	result.Nodes = search.nodes
 	return result, nil
 }
