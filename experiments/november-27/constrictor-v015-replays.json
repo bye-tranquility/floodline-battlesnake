@@ -1,0 +1,954 @@
+[
+  {
+    "game": "646cf302-5066-4e24-b6b9-c7a418f2223d",
+    "turn": 2,
+    "actual": "right",
+    "old": "right",
+    "new": "down",
+    "before": [
+      19,
+      2,
+      false
+    ],
+    "after": [
+      19,
+      3,
+      true
+    ]
+  },
+  {
+    "game": "3773cfda-13ee-4a3f-b95c-2fccc723e7b0",
+    "turn": 5,
+    "actual": "down",
+    "old": "down",
+    "new": "right",
+    "before": [
+      26,
+      1,
+      false
+    ],
+    "after": [
+      24,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "3773cfda-13ee-4a3f-b95c-2fccc723e7b0",
+    "turn": 10,
+    "actual": "left",
+    "old": "left",
+    "new": "up",
+    "before": [
+      26,
+      1,
+      false
+    ],
+    "after": [
+      26,
+      2,
+      true
+    ]
+  },
+  {
+    "game": "3773cfda-13ee-4a3f-b95c-2fccc723e7b0",
+    "turn": 11,
+    "actual": "up",
+    "old": "up",
+    "new": "left",
+    "before": [
+      26,
+      1,
+      false
+    ],
+    "after": [
+      25,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "a9d85f22-4136-4bce-b5b0-ddb05b689874",
+    "turn": 12,
+    "actual": "down",
+    "old": "down",
+    "new": "up",
+    "before": [
+      25,
+      1,
+      true
+    ],
+    "after": [
+      25,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "a9d85f22-4136-4bce-b5b0-ddb05b689874",
+    "turn": 13,
+    "actual": "down",
+    "old": "down",
+    "new": "left",
+    "before": [
+      25,
+      1,
+      true
+    ],
+    "after": [
+      25,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "a9d85f22-4136-4bce-b5b0-ddb05b689874",
+    "turn": 15,
+    "actual": "down",
+    "old": "down",
+    "new": "left",
+    "before": [
+      25,
+      1,
+      true
+    ],
+    "after": [
+      25,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "a9d85f22-4136-4bce-b5b0-ddb05b689874",
+    "turn": 19,
+    "actual": "down",
+    "old": "down",
+    "new": "left",
+    "before": [
+      25,
+      1,
+      true
+    ],
+    "after": [
+      25,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "d65d77a3-9147-4890-9a59-c9e48d4173c2",
+    "turn": 4,
+    "actual": "up",
+    "old": "up",
+    "new": "right",
+    "before": [
+      31,
+      1,
+      false
+    ],
+    "after": [
+      19,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "d65d77a3-9147-4890-9a59-c9e48d4173c2",
+    "turn": 6,
+    "actual": "left",
+    "old": "left",
+    "new": "up",
+    "before": [
+      31,
+      1,
+      false
+    ],
+    "after": [
+      31,
+      1,
+      false
+    ]
+  },
+  {
+    "game": "d65d77a3-9147-4890-9a59-c9e48d4173c2",
+    "turn": 7,
+    "actual": "left",
+    "old": "left",
+    "new": "up",
+    "before": [
+      31,
+      1,
+      false
+    ],
+    "after": [
+      31,
+      2,
+      true
+    ]
+  },
+  {
+    "game": "567b2bb9-d65b-4cd1-a610-d1d5a73fe2c0",
+    "turn": 4,
+    "actual": "right",
+    "old": "right",
+    "new": "up",
+    "before": [
+      18,
+      3,
+      false
+    ],
+    "after": [
+      18,
+      4,
+      true
+    ]
+  },
+  {
+    "game": "7aa4c9ac-0e8b-47b0-b495-238b0f5f4951",
+    "turn": 4,
+    "actual": "right",
+    "old": "right",
+    "new": "up",
+    "before": [
+      24,
+      1,
+      true
+    ],
+    "after": [
+      17,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "74caf8fb-a728-48a7-9375-baa93cd45d76",
+    "turn": 1,
+    "actual": "left",
+    "old": "left",
+    "new": "down",
+    "before": [
+      14,
+      2,
+      false
+    ],
+    "after": [
+      14,
+      3,
+      true
+    ]
+  },
+  {
+    "game": "e4d7f72a-d9b4-4903-99f3-1d38d910e9a7",
+    "turn": 4,
+    "actual": "right",
+    "old": "right",
+    "new": "down",
+    "before": [
+      53,
+      1,
+      true
+    ],
+    "after": [
+      51,
+      1,
+      false
+    ]
+  },
+  {
+    "game": "dabc7267-9835-4895-9194-ab5d6afe9604",
+    "turn": 4,
+    "actual": "right",
+    "old": "right",
+    "new": "down",
+    "before": [
+      27,
+      1,
+      false
+    ],
+    "after": [
+      27,
+      2,
+      true
+    ]
+  },
+  {
+    "game": "350b2ad7-904a-4ed3-9f4a-75d85b798c59",
+    "turn": 1,
+    "actual": "left",
+    "old": "left",
+    "new": "down",
+    "before": [
+      47,
+      1,
+      true
+    ],
+    "after": [
+      47,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "350b2ad7-904a-4ed3-9f4a-75d85b798c59",
+    "turn": 11,
+    "actual": "up",
+    "old": "up",
+    "new": "right",
+    "before": [
+      47,
+      1,
+      true
+    ],
+    "after": [
+      47,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "350b2ad7-904a-4ed3-9f4a-75d85b798c59",
+    "turn": 12,
+    "actual": "up",
+    "old": "up",
+    "new": "right",
+    "before": [
+      47,
+      1,
+      true
+    ],
+    "after": [
+      47,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "160d1ac0-d267-4eb6-a839-37ae3610df0d",
+    "turn": 8,
+    "actual": "right",
+    "old": "right",
+    "new": "left",
+    "before": [
+      33,
+      1,
+      false
+    ],
+    "after": [
+      33,
+      2,
+      true
+    ]
+  },
+  {
+    "game": "160d1ac0-d267-4eb6-a839-37ae3610df0d",
+    "turn": 11,
+    "actual": "down",
+    "old": "down",
+    "new": "left",
+    "before": [
+      33,
+      1,
+      false
+    ],
+    "after": [
+      33,
+      2,
+      true
+    ]
+  },
+  {
+    "game": "160d1ac0-d267-4eb6-a839-37ae3610df0d",
+    "turn": 14,
+    "actual": "left",
+    "old": "left",
+    "new": "down",
+    "before": [
+      33,
+      1,
+      false
+    ],
+    "after": [
+      33,
+      2,
+      true
+    ]
+  },
+  {
+    "game": "160d1ac0-d267-4eb6-a839-37ae3610df0d",
+    "turn": 16,
+    "actual": "left",
+    "old": "left",
+    "new": "down",
+    "before": [
+      33,
+      1,
+      false
+    ],
+    "after": [
+      33,
+      2,
+      true
+    ]
+  },
+  {
+    "game": "e008a765-f8d4-4785-8bd4-11cca9dd15c3",
+    "turn": 8,
+    "actual": "left",
+    "old": "left",
+    "new": "up",
+    "before": [
+      22,
+      1,
+      false
+    ],
+    "after": [
+      22,
+      2,
+      true
+    ]
+  },
+  {
+    "game": "e008a765-f8d4-4785-8bd4-11cca9dd15c3",
+    "turn": 18,
+    "actual": "down",
+    "old": "down",
+    "new": "left",
+    "before": [
+      22,
+      1,
+      false
+    ],
+    "after": [
+      22,
+      1,
+      false
+    ]
+  },
+  {
+    "game": "e008a765-f8d4-4785-8bd4-11cca9dd15c3",
+    "turn": 20,
+    "actual": "down",
+    "old": "down",
+    "new": "up",
+    "before": [
+      22,
+      1,
+      false
+    ],
+    "after": [
+      22,
+      1,
+      false
+    ]
+  },
+  {
+    "game": "626d887f-d7fe-4227-a672-42d8cce7c230",
+    "turn": 2,
+    "actual": "right",
+    "old": "right",
+    "new": "down",
+    "before": [
+      38,
+      1,
+      true
+    ],
+    "after": [
+      25,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "626d887f-d7fe-4227-a672-42d8cce7c230",
+    "turn": 12,
+    "actual": "up",
+    "old": "up",
+    "new": "down",
+    "before": [
+      38,
+      1,
+      true
+    ],
+    "after": [
+      38,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "626d887f-d7fe-4227-a672-42d8cce7c230",
+    "turn": 13,
+    "actual": "up",
+    "old": "up",
+    "new": "right",
+    "before": [
+      38,
+      1,
+      true
+    ],
+    "after": [
+      38,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "626d887f-d7fe-4227-a672-42d8cce7c230",
+    "turn": 15,
+    "actual": "up",
+    "old": "up",
+    "new": "left",
+    "before": [
+      38,
+      1,
+      true
+    ],
+    "after": [
+      32,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "02e23022-f7a4-45e2-883c-d351827e7969",
+    "turn": 4,
+    "actual": "up",
+    "old": "up",
+    "new": "right",
+    "before": [
+      29,
+      0,
+      false
+    ],
+    "after": [
+      29,
+      2,
+      true
+    ]
+  },
+  {
+    "game": "c94f8d5b-1600-479a-8425-2b0177a81e29",
+    "turn": 2,
+    "actual": "right",
+    "old": "right",
+    "new": "down",
+    "before": [
+      24,
+      2,
+      false
+    ],
+    "after": [
+      23,
+      3,
+      null
+    ]
+  },
+  {
+    "game": "c94f8d5b-1600-479a-8425-2b0177a81e29",
+    "turn": 4,
+    "actual": "right",
+    "old": "right",
+    "new": "down",
+    "before": [
+      24,
+      2,
+      false
+    ],
+    "after": [
+      23,
+      3,
+      null
+    ]
+  },
+  {
+    "game": "c94f8d5b-1600-479a-8425-2b0177a81e29",
+    "turn": 5,
+    "actual": "right",
+    "old": "right",
+    "new": "down",
+    "before": [
+      24,
+      2,
+      false
+    ],
+    "after": [
+      23,
+      2,
+      null
+    ]
+  },
+  {
+    "game": "2058676c-d38a-455e-9a99-026543c312a6",
+    "turn": 5,
+    "actual": "up",
+    "old": "up",
+    "new": "left",
+    "before": [
+      20,
+      2,
+      false
+    ],
+    "after": [
+      20,
+      2,
+      true
+    ]
+  },
+  {
+    "game": "f41f6c22-7645-4722-a855-23e27290e2de",
+    "turn": 2,
+    "actual": "right",
+    "old": "right",
+    "new": "down",
+    "before": [
+      39,
+      1,
+      true
+    ],
+    "after": [
+      39,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "f41f6c22-7645-4722-a855-23e27290e2de",
+    "turn": 4,
+    "actual": "right",
+    "old": "right",
+    "new": "down",
+    "before": [
+      39,
+      1,
+      true
+    ],
+    "after": [
+      31,
+      0,
+      false
+    ]
+  },
+  {
+    "game": "f41f6c22-7645-4722-a855-23e27290e2de",
+    "turn": 7,
+    "actual": "up",
+    "old": "up",
+    "new": "right",
+    "before": [
+      39,
+      1,
+      true
+    ],
+    "after": [
+      39,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "f41f6c22-7645-4722-a855-23e27290e2de",
+    "turn": 25,
+    "actual": "right",
+    "old": "right",
+    "new": "down",
+    "before": [
+      39,
+      1,
+      true
+    ],
+    "after": [
+      39,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "b8fb9541-7ede-4660-8bb1-22a5c960f1f7",
+    "turn": 4,
+    "actual": "left",
+    "old": "left",
+    "new": "down",
+    "before": [
+      28,
+      1,
+      true
+    ],
+    "after": [
+      28,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "b8fb9541-7ede-4660-8bb1-22a5c960f1f7",
+    "turn": 5,
+    "actual": "left",
+    "old": "left",
+    "new": "down",
+    "before": [
+      28,
+      1,
+      true
+    ],
+    "after": [
+      28,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "5bc99e79-75c5-4162-9d48-a83373b739ef",
+    "turn": 4,
+    "actual": "left",
+    "old": "left",
+    "new": "down",
+    "before": [
+      48,
+      2,
+      true
+    ],
+    "after": [
+      24,
+      1,
+      false
+    ]
+  },
+  {
+    "game": "5bc99e79-75c5-4162-9d48-a83373b739ef",
+    "turn": 5,
+    "actual": "left",
+    "old": "left",
+    "new": "down",
+    "before": [
+      48,
+      2,
+      true
+    ],
+    "after": [
+      24,
+      1,
+      false
+    ]
+  },
+  {
+    "game": "5bc99e79-75c5-4162-9d48-a83373b739ef",
+    "turn": 6,
+    "actual": "up",
+    "old": "up",
+    "new": "down",
+    "before": [
+      48,
+      2,
+      true
+    ],
+    "after": [
+      43,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "6c29ed30-0a76-49ef-83ec-4cf64c3e6092",
+    "turn": 2,
+    "actual": "right",
+    "old": "right",
+    "new": "up",
+    "before": [
+      17,
+      3,
+      false
+    ],
+    "after": [
+      17,
+      3,
+      true
+    ]
+  },
+  {
+    "game": "96b4dbca-5e3f-43b6-b5ae-f730cbc840e4",
+    "turn": 4,
+    "actual": "right",
+    "old": "right",
+    "new": "up",
+    "before": [
+      23,
+      4,
+      true
+    ],
+    "after": [
+      23,
+      4,
+      true
+    ]
+  },
+  {
+    "game": "96b4dbca-5e3f-43b6-b5ae-f730cbc840e4",
+    "turn": 5,
+    "actual": "right",
+    "old": "right",
+    "new": "up",
+    "before": [
+      23,
+      4,
+      true
+    ],
+    "after": [
+      22,
+      3,
+      false
+    ]
+  },
+  {
+    "game": "53cb4e49-b730-401c-b8e4-5166c1381fb5",
+    "turn": 7,
+    "actual": "down",
+    "old": "down",
+    "new": "left",
+    "before": [
+      24,
+      0,
+      false
+    ],
+    "after": [
+      20,
+      2,
+      false
+    ]
+  },
+  {
+    "game": "6c52ffad-55d9-4349-8751-295c09f67fa2",
+    "turn": 3,
+    "actual": "up",
+    "old": "up",
+    "new": "down",
+    "before": [
+      24,
+      3,
+      true
+    ],
+    "after": [
+      23,
+      2,
+      false
+    ]
+  },
+  {
+    "game": "6c52ffad-55d9-4349-8751-295c09f67fa2",
+    "turn": 5,
+    "actual": "right",
+    "old": "right",
+    "new": "down",
+    "before": [
+      24,
+      3,
+      true
+    ],
+    "after": [
+      22,
+      2,
+      false
+    ]
+  },
+  {
+    "game": "5eb8baca-1c7d-4b3e-bfae-6f94b1b1ac20",
+    "turn": 8,
+    "actual": "down",
+    "old": "down",
+    "new": "right",
+    "before": [
+      49,
+      1,
+      true
+    ],
+    "after": [
+      47,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "5eb8baca-1c7d-4b3e-bfae-6f94b1b1ac20",
+    "turn": 9,
+    "actual": "down",
+    "old": "down",
+    "new": "right",
+    "before": [
+      49,
+      1,
+      true
+    ],
+    "after": [
+      47,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "76df7163-99f1-41c3-8f9a-3e3e6049af6d",
+    "turn": 5,
+    "actual": "left",
+    "old": "left",
+    "new": "up",
+    "before": [
+      15,
+      2,
+      false
+    ],
+    "after": [
+      24,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "76df7163-99f1-41c3-8f9a-3e3e6049af6d",
+    "turn": 6,
+    "actual": "left",
+    "old": "left",
+    "new": "down",
+    "before": [
+      15,
+      2,
+      false
+    ],
+    "after": [
+      18,
+      2,
+      false
+    ]
+  },
+  {
+    "game": "76df7163-99f1-41c3-8f9a-3e3e6049af6d",
+    "turn": 12,
+    "actual": "right",
+    "old": "right",
+    "new": "down",
+    "before": [
+      24,
+      1,
+      true
+    ],
+    "after": [
+      24,
+      1,
+      true
+    ]
+  },
+  {
+    "game": "76df7163-99f1-41c3-8f9a-3e3e6049af6d",
+    "turn": 16,
+    "actual": "right",
+    "old": "right",
+    "new": "down",
+    "before": [
+      24,
+      1,
+      true
+    ],
+    "after": [
+      24,
+      1,
+      true
+    ]
+  }
+]
