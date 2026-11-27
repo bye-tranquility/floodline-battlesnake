@@ -1,0 +1,43 @@
+{
+  "game": "351cae81-45ec-47e5-9e46-424786211478",
+  "arena": {
+    "decision_turn": 247,
+    "latency_ms": 500,
+    "rival_latency_on_turn_ms": 227,
+    "subsequent_turns_to_last_decision": 36
+  },
+  "railway": {
+    "interval_utc": [
+      "2026-11-27T01:55:42Z",
+      "2026-11-27T01:56:02Z"
+    ],
+    "responses": {
+      "200": 27,
+      "499": 1
+    },
+    "maximum_request_ms": 43,
+    "cancelled_request_utc": "2026-11-27T01:55:53.758526674Z",
+    "cancelled_request_ms": 1,
+    "edge": "europe-west4-drams3a",
+    "upstream_status": "client closed request before server could send response",
+    "correlation": "The shared time window contains one cancellation. Railway HTTP logs do not contain a game ID."
+  },
+  "isolated_cpu_test": {
+    "1": {
+      "requests": 500,
+      "concurrency": 1,
+      "p50_ms": 18.846,
+      "p99_ms": 21.495,
+      "max_ms": 44.929,
+      "over_500_ms": 0
+    },
+    "4": {
+      "requests": 500,
+      "concurrency": 4,
+      "p50_ms": 21.849,
+      "p99_ms": 40.222,
+      "max_ms": 58.265,
+      "over_500_ms": 0
+    }
+  }
+}
