@@ -1,0 +1,38 @@
+{
+  "mixed": {
+    "1": {
+      "requests": 500,
+      "concurrency": 1,
+      "p50_ms": 1.132,
+      "p99_ms": 25.297,
+      "max_ms": 27.75,
+      "over_500_ms": 0
+    },
+    "4": {
+      "requests": 500,
+      "concurrency": 4,
+      "p50_ms": 7.681,
+      "p99_ms": 40.04,
+      "max_ms": 44.829,
+      "over_500_ms": 0
+    }
+  },
+  "standard": {
+    "1": {
+      "requests": 500,
+      "concurrency": 1,
+      "p50_ms": 1.228,
+      "p99_ms": 3.042,
+      "max_ms": 5.469,
+      "over_500_ms": 0
+    },
+    "4": {
+      "requests": 500,
+      "concurrency": 4,
+      "p50_ms": 2.953,
+      "p99_ms": 5.135,
+      "max_ms": 6.812,
+      "over_500_ms": 0
+    }
+  }
+}

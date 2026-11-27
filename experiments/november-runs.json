@@ -10860,6 +10860,210 @@
       "wins": 9
     }
   },
+  "standard-near-rival-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "With three snakes in Standard and a nearby rival or cramped passage, jointly search our moves and the nearest rival. The third moving body stays on the board.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "8ac25fde683ec7d20bff47bbda067759745f07a32bbf2a43515bd445408ab0ba",
+      "reference": "9ecc09cdfa59cfde8312b2c98a4fa1696e0df10f244e039e8696acf96b784816"
+    },
+    "summary": {
+      "average_place": 1.85,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 265001,
+      "losses": 54,
+      "max_ms": 161.947,
+      "mode": "standard",
+      "opponent": "search",
+      "reference_average_place": 2.165,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 46
+    }
+  },
+  "standard-near-rival-original": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Measure the same three-player search against the original course submission baseline on a separate 25-seed holdout.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "8ac25fde683ec7d20bff47bbda067759745f07a32bbf2a43515bd445408ab0ba",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.725,
+      "candidate": "search",
+      "draws": 2,
+      "first_seed": 266001,
+      "losses": 31,
+      "max_ms": 143.211,
+      "mode": "standard",
+      "opponent": "search",
+      "reference_average_place": 2.385,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 67
+    }
+  },
+  "standard-near-rival-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "With three snakes in Standard and a nearby rival or cramped passage, jointly search our moves and the nearest rival. The third moving body stays on the board.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ],
+        [
+          "food",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "8ac25fde683ec7d20bff47bbda067759745f07a32bbf2a43515bd445408ab0ba",
+      "reference": "9ecc09cdfa59cfde8312b2c98a4fa1696e0df10f244e039e8696acf96b784816"
+    },
+    "summary": {
+      "average_place": 1.6666666666666667,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 264001,
+      "losses": 7,
+      "max_ms": 75.834,
+      "mode": "standard",
+      "opponent": "search",
+      "reference_average_place": 2.25,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 17
+    }
+  },
+  "standard-near-rival-v0201-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Confirm the three-snake Standard strategy in the current release when a nearby rival can block the escape.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "e86e150cef07ab50bba9bf2d3310b8c0a58be4a3f360da7e06dab2fe0d0e6136",
+      "reference": "5ca44c036e9d21e4f861849cecd981711fc607710188cd13dce09923e68227b8"
+    },
+    "summary": {
+      "average_place": 1.8,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 309001,
+      "losses": 51,
+      "max_ms": 60.867,
+      "mode": "standard",
+      "opponent": "search",
+      "reference_average_place": 2.2,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 49
+    }
+  },
   "standard-next-exit-control": {
     "engine": "Battlesnake CLI v1.2.3",
     "hypothesis": "Check two-turn simultaneous Standard safety with 25 untouched paired opening seeds and five trainer combinations",

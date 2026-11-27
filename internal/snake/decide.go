@@ -44,6 +44,12 @@ func Decide(r *Request, started time.Time, opts Options) (Decision, error) {
 		}
 	}
 	if len(p.snakes) != 2 {
+		if p.plainDuelGrid && len(p.snakes) == 3 && len(p.snakes[0].body) >= 6 {
+			search := groupDuel{analysis: a, deadline: started.Add(min(budget, 35*time.Millisecond))}
+			if search.active(p) {
+				result.Move = names[search.choose(p, fallback)]
+			}
+		}
 		if p.forecastFork() {
 			end := started.Add(min(budget, 45*time.Millisecond))
 			result.Move = names[p.refinePlacement(a, fallback, end)]

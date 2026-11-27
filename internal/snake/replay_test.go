@@ -57,6 +57,24 @@ func TestForcedMoveAtSosnaTimeout(t *testing.T) {
 	}
 }
 
+func TestStandardThreeSnakeEscape(t *testing.T) {
+	records := readReplay(t, "standard-three-snake-regression")
+	want := map[int]direction{161: up, 309: left}
+	for _, req := range records {
+		move, ok := want[req.Turn]
+		if !ok || len(req.Board.Snakes) != 3 {
+			t.Fatalf("unexpected Standard position on turn %d", req.Turn)
+		}
+		if got := replayMove(t, &req); got != move {
+			t.Fatalf("turn %d chose %s, want exit %s", req.Turn, names[got], names[move])
+		}
+		delete(want, req.Turn)
+	}
+	if len(want) != 0 {
+		t.Fatalf("missing Standard positions %v", want)
+	}
+}
+
 func TestEscapeAtWhiravFork(t *testing.T) {
 	for _, req := range readReplay(t, "duels") {
 		if req.Game.ID == "35227f65-f759-4caa-8c87-17a1c746f6a6" && req.Turn == 231 {
