@@ -46,6 +46,17 @@ func replayMove(t *testing.T, req *Request) direction {
 	return direction(slices.Index(names[:], d.Move))
 }
 
+func TestForcedMoveAtSosnaTimeout(t *testing.T) {
+	records := readReplay(t, "duels-sosna-timeout")
+	if len(records) != 1 || records[0].Turn != 418 {
+		t.Fatal("expected the last decision against Sosna Prime II")
+	}
+	decision, err := Decide(&records[0], time.Now(), Options{Style: "search", Budget: 75 * time.Millisecond, NodeLimit: 1200})
+	if err != nil || decision.Move != "up" || decision.Nodes != 0 {
+		t.Fatalf("expected the forced up move without search, got %+v, %v", decision, err)
+	}
+}
+
 func TestEscapeAtWhiravFork(t *testing.T) {
 	for _, req := range readReplay(t, "duels") {
 		if req.Game.ID == "35227f65-f759-4caa-8c87-17a1c746f6a6" && req.Turn == 231 {

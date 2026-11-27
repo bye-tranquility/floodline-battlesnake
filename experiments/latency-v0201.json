@@ -1,0 +1,56 @@
+{
+  "mixed_v0201": {
+    "1": {
+      "requests": 500,
+      "concurrency": 1,
+      "p50_ms": 1.069,
+      "p99_ms": 23.823,
+      "max_ms": 26.831,
+      "over_500_ms": 0
+    },
+    "4": {
+      "requests": 500,
+      "concurrency": 4,
+      "p50_ms": 7.766,
+      "p99_ms": 44.012,
+      "max_ms": 61.255,
+      "over_500_ms": 0
+    }
+  },
+  "sosna_v0200": {
+    "1": {
+      "requests": 500,
+      "concurrency": 1,
+      "p50_ms": 20.899,
+      "p99_ms": 22.977,
+      "max_ms": 29.624,
+      "over_500_ms": 0
+    },
+    "4": {
+      "requests": 500,
+      "concurrency": 4,
+      "p50_ms": 21.936,
+      "p99_ms": 51.251,
+      "max_ms": 63.88,
+      "over_500_ms": 0
+    }
+  },
+  "sosna_v0201": {
+    "1": {
+      "requests": 500,
+      "concurrency": 1,
+      "p50_ms": 0.559,
+      "p99_ms": 2.383,
+      "max_ms": 6.392,
+      "over_500_ms": 0
+    },
+    "4": {
+      "requests": 500,
+      "concurrency": 4,
+      "p50_ms": 1.047,
+      "p99_ms": 2.932,
+      "max_ms": 8.519,
+      "over_500_ms": 0
+    }
+  }
+}

@@ -18,6 +18,13 @@ func Decide(r *Request, started time.Time, opts Options) (Decision, error) {
 		return Decision{}, err
 	}
 	a := newAnalysis(len(p.food))
+	if opts.Style == "search" && p.plainDuelGrid && len(p.snakes) == 2 {
+		p.occupied(a.blocked)
+		options := p.choices(p.snakes[0], a.blocked, -1)
+		if options.count == 1 {
+			return Decision{Move: names[options.moves[0]]}, nil
+		}
+	}
 	fallback := p.steer(a, opts.Style)
 	result := Decision{Move: names[fallback]}
 	if opts.Style != "search" {
