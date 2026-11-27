@@ -31,6 +31,11 @@ func Decide(r *Request, started time.Time, opts Options) (Decision, error) {
 	if budget <= 0 || !time.Now().Before(started.Add(budget)) {
 		return result, nil
 	}
+	if r.Turn == 0 && p.constrictor && len(r.Board.Hazards) == 0 && len(r.Board.Food) == 0 {
+		if move, ok := p.edgeOpening(); ok {
+			return Decision{Move: names[move]}, nil
+		}
+	}
 	if len(p.snakes) != 2 {
 		if p.forecastFork() {
 			end := started.Add(min(budget, 45*time.Millisecond))

@@ -1087,6 +1087,210 @@
       "wins": 3
     }
   },
+  "constrictor-edge-opening-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Validate the learned tangential opening on 25 unrepeated starts with four seat rotations.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "2735844c734b5d61ac7d4f5de1157731c1d754a7640538b5cff77aa2a2663dd1",
+      "reference": "712bfeeed27e1aabd7c1504e8f378cbcd3924578c2b0563fe8a7d8f2ebafb50f"
+    },
+    "summary": {
+      "average_place": 1.89,
+      "candidate": "search",
+      "draws": 16,
+      "first_seed": 239001,
+      "losses": 45,
+      "max_ms": 45.527,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.545,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 39
+    }
+  },
+  "constrictor-edge-opening-final-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Compare the independently validated Constrictor edge opening against the next ordinary-duel release in 100 new games.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "2735844c734b5d61ac7d4f5de1157731c1d754a7640538b5cff77aa2a2663dd1",
+      "reference": "5ecb5b3afaa4eb0aa77da1eaf09b4fa21ac2b2ef549302451fb5dcbb29c7b99e"
+    },
+    "summary": {
+      "average_place": 1.895,
+      "candidate": "search",
+      "draws": 20,
+      "first_seed": 242001,
+      "losses": 45,
+      "max_ms": 39.927,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.675,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 35
+    }
+  },
+  "constrictor-edge-opening-original": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Validate the learned tangential opening on 25 unrepeated starts with four seat rotations.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "2735844c734b5d61ac7d4f5de1157731c1d754a7640538b5cff77aa2a2663dd1",
+      "reference": "bc512ba259e7c426339c6b48f963031be25319a232e94c693f849319e0030943"
+    },
+    "summary": {
+      "average_place": 1.8,
+      "candidate": "search",
+      "draws": 13,
+      "first_seed": 240001,
+      "losses": 52,
+      "max_ms": 46.54,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.35,
+      "rotations": 4,
+      "seeds": 25,
+      "wins": 35
+    }
+  },
+  "constrictor-edge-opening-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Use a single independently fitted tangential first step for the canonical four edge-midpoint configuration. Held-out opponent compositions favored this direction.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ],
+        [
+          "food",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "2735844c734b5d61ac7d4f5de1157731c1d754a7640538b5cff77aa2a2663dd1",
+      "reference": "712bfeeed27e1aabd7c1504e8f378cbcd3924578c2b0563fe8a7d8f2ebafb50f"
+    },
+    "summary": {
+      "average_place": 1.6875,
+      "candidate": "search",
+      "draws": 8,
+      "first_seed": 238001,
+      "losses": 8,
+      "max_ms": 35.456,
+      "mode": "constrictor",
+      "opponent": "search",
+      "reference_average_place": 2.9375,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 8
+    }
+  },
   "constrictor-finish-screen": {
     "engine": "Battlesnake CLI v1.2.3",
     "hypothesis": "Play simultaneous trails to a 24-turn horizon with three opponent policies and rank by relative elimination. Replay against emosnake_2.",
@@ -2939,6 +3143,37 @@
       "wins": 1
     }
   },
+  "duel-endgame-joint-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Check the joint-response simulation and a 20 percent node allowance combined with the accepted endgame evaluator.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "c544c3721927578dc5a2eccc8d2929d5b0b5923b8d9bcb801a81e3a2afcdfb1b",
+      "reference": "5ecb5b3afaa4eb0aa77da1eaf09b4fa21ac2b2ef549302451fb5dcbb29c7b99e"
+    },
+    "summary": {
+      "average_place": 1.4583333333333333,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 243001,
+      "losses": 11,
+      "max_ms": 86.683,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 12,
+      "points": 13.0,
+      "reference_average_place": 1.5416666666666667,
+      "rotations": 2,
+      "seeds": 12,
+      "wins": 13
+    }
+  },
   "duel-expected-food-control": {
     "engine": "Battlesnake CLI v1.2.3",
     "hypothesis": "Independent 100 duels after 16/24 in screening for evaluating the guaranteed next food over all eligible squares.",
@@ -3118,6 +3353,37 @@
       "rotations": 2,
       "seeds": 12,
       "wins": 9
+    }
+  },
+  "duel-joint-masks-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Independent 100-game control of the verified joint move optimization and extra ordinary-duel nodes.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "6ee7e0f8228233a939239a337e694ae8571f7e0d8df26dcfa989b7bae76f9f6a",
+      "reference": "712bfeeed27e1aabd7c1504e8f378cbcd3924578c2b0563fe8a7d8f2ebafb50f"
+    },
+    "summary": {
+      "average_place": 1.38,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 233001,
+      "losses": 38,
+      "max_ms": 117.562,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 50,
+      "points": 62.0,
+      "reference_average_place": 1.62,
+      "rotations": 2,
+      "seeds": 50,
+      "wins": 62
     }
   },
   "duel-joint-masks-screen": {
@@ -8197,6 +8463,60 @@
       "rotations": 4,
       "seeds": 6,
       "wins": 10
+    }
+  },
+  "royale-last-meal-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "When ordinary Royale duel search refuses an immediately available safe meal, verify one extra joint turn to discover a closing retreat.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        [
+          "food",
+          "press"
+        ],
+        [
+          "space",
+          "food"
+        ],
+        [
+          "search",
+          "space"
+        ],
+        [
+          "press",
+          "search"
+        ],
+        [
+          "baseline",
+          "space"
+        ],
+        [
+          "food",
+          "space"
+        ]
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "34fc1997b9e297ecfebe28e9499ccb18e73a988ea4afcc46ed0e3d33e6da490a",
+      "reference": "712bfeeed27e1aabd7c1504e8f378cbcd3924578c2b0563fe8a7d8f2ebafb50f"
+    },
+    "summary": {
+      "average_place": 2.1875,
+      "candidate": "search",
+      "draws": 3,
+      "first_seed": 241001,
+      "losses": 15,
+      "max_ms": 10.251,
+      "mode": "royale",
+      "opponent": "search",
+      "reference_average_place": 2.1458333333333335,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 6
     }
   },
   "royale-likely-contact-screen": {

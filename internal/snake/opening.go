@@ -36,3 +36,41 @@ func (a *analysis) openingFood(p position) (direction, bool) {
 	}
 	return choice, best != -infinity
 }
+
+// On the four cardinal starts, follow the edge for a turn before choosing
+// the first inward corridor. Each assigned move was selected on training
+// lineups that were disjoint from the ones used to validate the opening.
+func (p position) edgeOpening() (direction, bool) {
+	if p.width != 11 || p.height != 11 || len(p.snakes) != 4 {
+		return up, false
+	}
+	var seen [4]bool
+	var first direction
+	for i, s := range p.snakes {
+		head := s.body[0]
+		if len(s.body) != 3 || s.body[1] != head || s.body[2] != head {
+			return up, false
+		}
+		var side, move direction
+		switch head {
+		case 5*11 + 1:
+			side, move = left, up
+		case 5*11 + 9:
+			side, move = right, up
+		case 1*11 + 5:
+			side, move = down, left
+		case 9*11 + 5:
+			side, move = up, right
+		default:
+			return up, false
+		}
+		if seen[side] {
+			return up, false
+		}
+		seen[side] = true
+		if i == 0 {
+			first = move
+		}
+	}
+	return first, true
+}

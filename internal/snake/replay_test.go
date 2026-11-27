@@ -89,6 +89,29 @@ func TestWhiravRematchAtNorthWall(t *testing.T) {
 	t.Fatal("missing Whirav rematch turn 257")
 }
 
+func TestFourEdgeStarts(t *testing.T) {
+	want := map[Point]direction{{1, 5}: up, {9, 5}: up, {5, 1}: left, {5, 9}: right}
+	for _, req := range readReplay(t, "constrictor-edge-openings") {
+		start := req.You.Body[0]
+		move, ok := want[start]
+		if !ok || replayMove(t, &req) != move {
+			t.Fatalf("unexpected opening at %v", start)
+		}
+		delete(want, start)
+		p, err := req.position()
+		if err != nil {
+			t.Fatal(err)
+		}
+		p.snakes[1].body = []int{0, 0, 0}
+		if _, matched := p.edgeOpening(); matched {
+			t.Fatal("opening matched a nonstandard formation")
+		}
+	}
+	if len(want) != 0 {
+		t.Fatalf("missing edge starts %v", want)
+	}
+}
+
 func TestElizabeth1Corridor(t *testing.T) {
 	checked := 0
 	for _, req := range readReplay(t, "duels-elizabeth1") {

@@ -1,0 +1,18 @@
+{
+  "1": {
+    "requests": 500,
+    "concurrency": 1,
+    "p50_ms": 1.442,
+    "p99_ms": 26.459,
+    "max_ms": 29.685,
+    "over_500_ms": 0
+  },
+  "4": {
+    "requests": 500,
+    "concurrency": 4,
+    "p50_ms": 10.543,
+    "p99_ms": 51.517,
+    "max_ms": 68.828,
+    "over_500_ms": 0
+  }
+}
