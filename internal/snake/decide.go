@@ -76,6 +76,14 @@ func Decide(r *Request, started time.Time, opts Options) (Decision, error) {
 			search.limit *= 4
 		}
 	}
+	ourLength, rivalLength := len(p.snakes[0].body), len(p.snakes[1].body)
+	// Spend the saved search work while both snakes can still change their
+	// route through open space. Keep the ordinary search in dense endgames.
+	if opts.NodeLimit == 1200 && p.plainDuelGrid && ourLength+rivalLength >= 26 &&
+		max(ourLength, rivalLength) <= 26 {
+		search.reuseMoves = true
+		search.limit += search.limit / 2
+	}
 	move, depth := search.deepen(p, fallback)
 	return Decision{Move: names[move], Depth: depth, Nodes: search.nodes}, nil
 }

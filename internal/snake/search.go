@@ -11,6 +11,7 @@ type duelSearch struct {
 	deadline      time.Time
 	limit, nodes  int
 	tacticalDepth int
+	reuseMoves    bool
 }
 
 type lineOrder struct {
@@ -123,7 +124,12 @@ func (s *duelSearch) evaluate(p position) int {
 // Both players choose from the same board. Apply each pair of moves together,
 // maximize the worst reply, and propagate bounds between simultaneous turns.
 func (s *duelSearch) best(p position, depth, ply, alpha, beta int, preferred direction, path uint64) (direction, int, bool) {
-	p.occupied(s.blocked)
+	var joint jointTurn
+	if s.reuseMoves {
+		joint.prepare(p, s.blocked)
+	} else {
+		p.occupied(s.blocked)
+	}
 	our := p.choices(p.snakes[0], s.blocked, preferred)
 	their := p.choices(p.snakes[1], s.blocked, -1)
 	// Earlier depths of this request suggest which legal moves to try first.
@@ -147,8 +153,14 @@ func (s *duelSearch) best(p position, depth, ply, alpha, beta int, preferred dir
 				return bestMove, 0, false
 			}
 			s.nodes++
-			next := p.advance([]direction{m, reply})
-			us, foe := len(next.snakes[0].body) > 0, len(next.snakes[1].body) > 0
+			var next position
+			var us, foe bool
+			if s.reuseMoves {
+				next, us, foe = joint.advance(m, reply)
+			} else {
+				next = p.advance([]direction{m, reply})
+				us, foe = len(next.snakes[0].body) > 0, len(next.snakes[1].body) > 0
+			}
 			score := 0
 			switch {
 			case !us && !foe:

@@ -1895,7 +1895,7 @@
   },
   "constrictor-joint-tree-screen": {
     "engine": "Battlesnake CLI v1.2.3",
-    "hypothesis": "Select open Constrictor corridors by simultaneous tree search maximizing each snake\u2019s own expected placement",
+    "hypothesis": "Select open Constrictor corridors by simultaneous tree search maximizing each snake’s own expected placement",
     "search_ms": "75",
     "search_nodes": "1200",
     "settings": {
@@ -3969,6 +3969,106 @@
       "wins": 15
     }
   },
+  "duel-joint-midlength-control": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "A midgame-only extension converts one Taiga Fang continuation while preserving replay wins in the dense endgame; test independent starts.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        "food",
+        "press"
+      ],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "cf6ddcef18978e0ac5fa49f5078d5ed7cc1c2364168f56687f77609832c005e2",
+      "reference": "d698fc110b7d7bc70373ab463edf62c1c7579cb71142d0205a398efcb33a21b1"
+    },
+    "summary": {
+      "average_place": 1.42,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 320001,
+      "losses": 42,
+      "max_ms": 88.707,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 50,
+      "points": 58.0,
+      "reference_average_place": 1.58,
+      "rotations": 2,
+      "seeds": 50,
+      "wins": 58
+    }
+  },
+  "duel-joint-midlength-screen": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Use the previously validated paired-move cache to extend search only before either snake grows beyond length 26.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        "food",
+        "press"
+      ],
+      "rules_profile": "arena",
+      "seat_order": "cyclic"
+    },
+    "sha256": {
+      "candidate": "cf6ddcef18978e0ac5fa49f5078d5ed7cc1c2364168f56687f77609832c005e2",
+      "reference": "d698fc110b7d7bc70373ab463edf62c1c7579cb71142d0205a398efcb33a21b1"
+    },
+    "summary": {
+      "average_place": 1.5,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 319001,
+      "losses": 12,
+      "max_ms": 76.382,
+      "mode": "duels",
+      "opponent": "search",
+      "pairs": 12,
+      "points": 12.0,
+      "reference_average_place": 1.5,
+      "rotations": 2,
+      "seeds": 12,
+      "wins": 12
+    }
+  },
+  "duel-joint-midlength-standard": {
+    "engine": "Battlesnake CLI v1.2.3",
+    "hypothesis": "Check the two-player optimization in Standard endings with four matched seat rotations.",
+    "search_ms": "75",
+    "search_nodes": "1200",
+    "settings": {
+      "field_styles": [
+        "food",
+        "press"
+      ],
+      "rules_profile": "arena",
+      "seat_order": "paired"
+    },
+    "sha256": {
+      "candidate": "c42a89df5a62fc285d3bef9763795816d6575fd383c81f9278a239dcc6df48ec",
+      "reference": "d698fc110b7d7bc70373ab463edf62c1c7579cb71142d0205a398efcb33a21b1"
+    },
+    "summary": {
+      "average_place": 2.0833333333333335,
+      "candidate": "search",
+      "draws": 0,
+      "first_seed": 321001,
+      "losses": 13,
+      "max_ms": 97.28,
+      "mode": "standard",
+      "opponent": "search",
+      "reference_average_place": 2.1666666666666665,
+      "rotations": 4,
+      "seeds": 6,
+      "wins": 11
+    }
+  },
   "duel-last-exit-control": {
     "engine": "Battlesnake CLI v1.2.3",
     "hypothesis": "Hold out 50 fresh starts for the DenoM Jedi sole remaining route after the 12-12 initial series",
@@ -4178,7 +4278,7 @@
   },
   "duel-order-screen": {
     "engine": "Battlesnake CLI v1.2.3",
-    "hypothesis": "Search the preceding depth\u2019s best defenses first, to see farther down late-game corridors",
+    "hypothesis": "Search the preceding depth’s best defenses first, to see farther down late-game corridors",
     "search_ms": "75",
     "search_nodes": "1200",
     "sha256": {
