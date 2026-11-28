@@ -58,8 +58,6 @@ type serpent struct {
 
 // The controlled snake is always at index zero. Empty bodies mark eliminations.
 type position struct {
-	cachedGrid            bool
-	blockedMask, foodMask cells11
 	*field
 	snakes []serpent
 	food   []bool

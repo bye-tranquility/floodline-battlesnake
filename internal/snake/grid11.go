@@ -78,17 +78,15 @@ func fillArrivals(blocked, start cells11, dst []int) {
 // Keep counting reachable space and food after the territory horizon.
 func (s *duelSearch) duelRegions(p position, gap int) (region, region, int) {
 	me, them := p.snakes[0], p.snakes[1]
-	blocked, food := p.blockedMask, p.foodMask
-	if !p.cachedGrid {
-		for _, snake := range p.snakes {
-			for _, c := range snake.body[:len(snake.body)-1] {
-				blocked.add(c)
-			}
+	var blocked, food cells11
+	for _, snake := range p.snakes {
+		for _, c := range snake.body[:len(snake.body)-1] {
+			blocked.add(c)
 		}
-		for c, present := range p.food {
-			if present {
-				food.add(c)
-			}
+	}
+	for c, present := range p.food {
+		if present {
+			food.add(c)
 		}
 	}
 	var ourStart, theirStart cells11
